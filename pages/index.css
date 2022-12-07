@@ -1,6 +1,6 @@
 /* Resources*/
 @import url(../vendor/normalize.css);
-/*@import url(../vendor/fonts/);*/
+@import url(../vendor/fonts/fonts.css);
 
 /* page*/
 @import url(../blocks/page/page.css);
@@ -17,5 +17,24 @@
 /* elements*/
 @import url(../blocks/elements/elements.css);
 
+/* elements-list*/
+@import url(../blocks/elements-list/elements-list.css);
+
+/* element */
+@import url(../blocks/element/element.css);
+@import url(../blocks/element/__image/element__image.css);
+
 /* footer*/
 @import url(../blocks/footer/footer.css);
+
+
+
+/* Основной код для разрешения 1280px */
+/* стили для стандартных компьютеров и ноутбуков */
+
+@media screen and (max-width: 1024px) {
+    /* стили для планшетов */
+}
+@media screen and (max-width: 544px) {
+    /* стили для мобильных устройств */
+}

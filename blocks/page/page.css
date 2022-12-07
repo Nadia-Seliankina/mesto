@@ -1,5 +1,4 @@
 .page {
-  border: 1px solid red;
   min-width: 320px;
   max-width: 1280px;
   min-height: 100vh;
@@ -9,4 +8,11 @@
   margin: 0 auto;
   box-sizing: border-box;
   background-color: #000000;
+}
+
+@media screen and (max-width: 1024px) {
+  /* стили для планшетов */
+}
+@media screen and (max-width: 544px) {
+  /* стили для мобильных устройств */
 }
