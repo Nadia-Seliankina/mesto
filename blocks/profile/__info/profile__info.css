@@ -1,0 +1,18 @@
+.profile__info {
+  padding-left: 30px;
+  color: #FFFFFF;
+  font-family: 'Inter', Arial, Helvetica, sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  row-gap: 8px;
+}
+
+@media screen and (max-width: 1024px) {
+  .profile__info {
+    row-gap: 6px;
+    padding-top: 26px;
+    padding-bottom: 36px;
+    padding-left: 0;
+  }
+}
