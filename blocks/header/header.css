@@ -1,3 +1,20 @@
 .header {
-  border: 1px solid rgb(255, 136, 0);
+  margin: 45px 200px 0 200px;
+  min-height: 74px;
+  font-family: 'Inter', Arial, Helvetica, sans-serif;
+  border-bottom: 1px solid #545454;
+  box-sizing: border-box;
+}
+
+@media screen and (max-width: 1024px) {
+  .header {
+    margin: 28px 0 0;
+    min-height: 56px;
+  }
+}
+
+@media screen and (max-width: 544px) {
+  .header {
+    margin: 28px 0 0;
+  }
 }
