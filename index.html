@@ -97,5 +97,24 @@
     <footer class="footer">
       <p class="footer__text">© 2022 Надежда Селянкина</p>
     </footer>
+    <!-- Pop-up -->
+    <section class="form-edit">
+      <form class="form-edit__container">
+        <h2 class="form-edit__heading">Редактировать профиль</h2>
+        <fieldset class="form-edit__input form-edit__input_ctrl_text">
+          <!-- Получения данных о имени -->
+          <input type="text" name="name" value="Имя" required class="form-edit__item form-edit__item_el_name">
+          <!-- Получения данных о деятельности -->
+          <input type="text" name="activity" value="Вид деятельности" required class="form-edit__item form-edit__item_el_activity">
+        </fieldset>
+        <button name="button-save" type="submit" class="form-edit__button-save" 
+        value="Сохранить" aria-label="Сохранить">
+        Сохранить
+        </button>
+        <button name="button-close" type="button" class="form-edit__button-close" aria-label="Закрыть">
+          <!-- <img class="form-edit__button-image" src="./images/Close-Icon.svg" alt="Закрыть">-->
+        </button>
+      </form>
+    </section>
   </body>
 </html>
