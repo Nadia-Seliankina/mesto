@@ -43,6 +43,7 @@
 
 /* form-edit*/
 @import url(../blocks/form-edit/form-edit.css);
+@import url(../blocks/form-edit/_opened/form-edit_opened.css);
 @import url(../blocks/form-edit/__container/form-edit__container.css);
 @import url(../blocks/form-edit/__button-close/form-edit__button-close.css);
 @import url(../blocks/form-edit/__heading/form-edit__heading.css);
