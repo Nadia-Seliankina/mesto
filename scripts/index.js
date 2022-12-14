@@ -6,15 +6,17 @@ const popupElement = document.querySelector('.form-edit');
 const popupCloseButtonElement = popupElement.querySelector('.form-edit__button-close');
 const popupOpenButtonElement = document.querySelector('.profile__edit-button');
 
-const nameProfile = document.querySelector('.profile__name');
-const activityProfile = document.querySelector('.profile__activity');
+let nameProfile = document.querySelector('.profile__name');
+let activityProfile = document.querySelector('.profile__activity');
 
-const nameInput = document.querySelector('#item-name');
-const activityInput = document.querySelector('#item-activity');
+let nameInput = document.querySelector('#item-name');
+let activityInput = document.querySelector('#item-activity');
+
+let saveElement = document.querySelector('.form-edit__button-save');
 
 
 
-const openPopup = function() { 
+const openPopup = function openPopup() { 
     popupElement.classList.add('form-edit_opened');
     console.log('Open popup clicked');
     //копирование текста в форму из профиля при открытии
@@ -22,21 +24,25 @@ const openPopup = function() {
     activityInput.value = activityProfile.textContent;
 }
 
-const closePopup = function() { 
-    popupElement.classList.remove('form-edit_opened')
+const closePopup = function closePopup() { 
+    popupElement.classList.remove('form-edit_opened');
+    console.log('Close popup clicked');
 }
 
-//const closePopupByClickOnOverlay = function(event) {
-    //console.log(event.target, event.currentTarget);
-    //if (event.target !== event.currentTarget) {
-    //    return;
-    //}
-    
-    //closePopup();
-//}
-// Ранний выход из функции
+
+// Обработчик «отправки» формы
+// Эта строчка отменяет стандартную отправку формы.
+// Так мы можем определить свою логику отправки.
+function formSubmitHandler (evt) {
+    evt.preventDefault();
+    nameProfile.textContent = nameInput.value;
+    activityProfile.textContent = activityInput.value;
+    closePopup();
+}
 
 // Регистрируем обработчики событий по клику
 popupOpenButtonElement.addEventListener('click', openPopup);
 popupCloseButtonElement.addEventListener('click', closePopup);
-//popupElement.addEventListener('click', closePopupByClickOnOverlay);
+
+popupElement.addEventListener('submit', formSubmitHandler);
+

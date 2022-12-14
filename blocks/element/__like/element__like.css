@@ -2,3 +2,8 @@
   margin-right: 5px;
   margin-top: 5px;
 }
+
+.element__like:hover {
+  opacity: 0.5;
+  cursor: pointer;
+}

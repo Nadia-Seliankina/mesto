@@ -3,14 +3,20 @@
   width: 32px;
   border: none;
   padding: 0;
-  background-image: url(/images/Close-Icon.svg);
+  /*background-image: url(/images/Close-Icon.svg);
   background-repeat: no-repeat;
   background-position: center;
+ 
+  background-size: contain;*/
   background-color: transparent;
-  background-size: contain;
   position: absolute;
   top: -40px;
   right: -40px;
+}
+
+.form-edit__button-close:hover {
+  /*color: rgba(255, 255, 255, 0.6);*/
+  cursor: pointer;
 }
 
 @media screen and (max-width: 1024px) {
