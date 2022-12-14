@@ -49,6 +49,8 @@
 @import url(../blocks/form-edit/__heading/form-edit__heading.css);
 @import url(../blocks/form-edit/__input/form-edit__input.css);
 @import url(../blocks/form-edit/__item/form-edit__item.css);
+@import url(../blocks/form-edit/__item/_el/form-edit__item_el_name.css);
+@import url(../blocks/form-edit/__item/_el/form-edit__item_el_activity.css);
 @import url(../blocks/form-edit/__button-save/form-edit__button-save.css);
 
 
