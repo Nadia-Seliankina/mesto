@@ -20,4 +20,4 @@
 * Вёрстка макета под ландшафтную ориентацию устройств.
 
 **Ссылка на проект**
-https://nadia-seliankina.github.io/russian-travel/index.html
+https://nadia-seliankina.github.io/mesto/index.html
