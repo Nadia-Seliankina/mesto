@@ -23,21 +23,25 @@
         <div class="profile__info">
           <div class="profile__text">
             <h1 class="profile__name">Жак-Ив Кусто</h1>
-            <button class="profile__edit-button" name="edit-button" type="button" aria-label="Редактировать"></button>
+            <button class="profile__edit-button" name="edit-button" type="button" aria-label="Редактировать">
+              <img class="profile__edit-button-image" src="./images/Edit.svg" alt="Редактировать">
+            </button>
           </div>
           <p class="profile__activity">Исследователь океана</p>
         </div>
-        <button class="profile__add-button" name="add-button" type="button" aria-label="Добавить"></button>
+        <button class="profile__add-button" name="add-button" type="button" aria-label="Добавить">
+          <img class="profile__add-button-image" src="./images/Plus.svg" alt="Добавить">
+        </button>
       </section>
       <section class="elements">
-        <ul class="elements-list">
+        <ul class="elements__list">
           <li class="element">
             <img class="element__image" src="./images/anton-maksimov-teberda-unsplash.jpg" 
             alt="Теберда">
             <div class="element__group">
               <h2 class="element__title">Теберда</h2>
               <button name="button-like" type="button" class="element__button" aria-label="Нравится">
-                <img class="element__like element__like_active" src="./images/Vector.svg" alt="Нравится">
+                <img class="element__like" src="./images/Vector.svg" alt="Нравится">
               </button>
             </div>
           </li>
@@ -47,7 +51,7 @@
             <div class="element__group">
               <h2 class="element__title">Гора Эльбрус</h2>
               <button name="button-like" type="button" class="element__button" aria-label="Нравится">
-                <img class="element__like element__like_active" src="./images/Vector.svg" alt="Нравится">
+                <img class="element__like" src="./images/Vector.svg" alt="Нравится">
               </button>
             </div>
           </li>
@@ -57,7 +61,7 @@
             <div class="element__group">
               <h2 class="element__title">Домбай</h2>
               <button name="button-like" type="button" class="element__button" aria-label="Нравится">
-                <img class="element__like element__like_active" src="./images/Vector.svg" alt="Нравится">
+                <img class="element__like" src="./images/Vector.svg" alt="Нравится">
               </button>
             </div>
           </li>
@@ -67,7 +71,7 @@
             <div class="element__group">
               <h2 class="element__title">Судак</h2>
               <button name="button-like" type="button" class="element__button" aria-label="Нравится">
-                <img class="element__like element__like_active" src="./images/Vector.svg" alt="Нравится">
+                <img class="element__like" src="./images/Vector.svg" alt="Нравится">
               </button>
             </div>
           </li>
@@ -77,7 +81,7 @@
             <div class="element__group">
               <h2 class="element__title">Ольхон</h2>
               <button name="button-like" type="button" class="element__button" aria-label="Нравится">
-                <img class="element__like element__like_active" src="./images/Vector.svg" alt="Нравится">
+                <img class="element__like" src="./images/Vector.svg" alt="Нравится">
               </button>
             </div>
           </li>
@@ -87,7 +91,7 @@
             <div class="element__group">
               <h2 class="element__title">Карачаево-Черкесия</h2>
               <button name="button-like" type="button" class="element__button" aria-label="Нравится">
-                <img class="element__like element__like_active" src="./images/Vector.svg" alt="Нравится">
+                <img class="element__like" src="./images/Vector.svg" alt="Нравится">
               </button>
             </div>
           </li>
@@ -99,21 +103,23 @@
     </footer>
     <!-- Pop-up -->
     <section class="form-edit">
-      <form class="form-edit__container">
+      <div class="form-edit__container">
         <h2 class="form-edit__heading">Редактировать профиль</h2>
-        <fieldset class="form-edit__input form-edit__input_ctrl_text">
+        <form class="form-edit__form" name="edit-profile">
+          <fieldset class="form-edit__input">
           <!-- Получения данных о имени -->
           <input type="text" name="input-name" placeholder="Имя" required class="form-edit__item" id="item-name">
           <!-- Получения данных о деятельности -->
           <input type="text" name="input-activity" placeholder="Вид деятельности" required class="form-edit__item" id="item-activity">
-        </fieldset>
-        <button name="button-save" type="submit" class="form-edit__button-save" aria-label="Сохранить">
-        Сохранить
-        </button>
+          </fieldset>
+          <button name="button-save" type="submit" class="form-edit__button-save" aria-label="Сохранить">
+          Сохранить
+          </button>
+        </form>
         <button name="button-close" type="button" class="form-edit__button-close" aria-label="Закрыть">
           <img class="form-edit__button-image" src="./images/Close-Icon.svg" alt="Закрыть">
         </button>
-      </form>
+      </div>
     </section>
     <script src="./scripts/index.js"></script>
   </body>

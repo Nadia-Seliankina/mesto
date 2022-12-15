@@ -12,6 +12,7 @@
     line-height: 1.22;
     text-align: center;
     color: #FFFFFF;
+    margin-top: 48px;
 }
 
 .form-edit__button-save:hover {
@@ -24,5 +25,6 @@
         height: 46px;
         font-size: 14px;
         line-height: 1.214;
+        margin-top: 45px;
     }
 }

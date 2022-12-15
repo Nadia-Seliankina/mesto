@@ -1,6 +1,3 @@
-// Проверяем, что подключили скрипт и он работает
-console.log('Привет мир!');
-
 // Делаем выборку DOM элементов
 const popupElement = document.querySelector('.form-edit');
 const popupCloseButtonElement = popupElement.querySelector('.form-edit__button-close');
