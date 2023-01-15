@@ -52,6 +52,16 @@ const initialCards = [
 // Получить шаблон
 const ElementTemplate = document.querySelector('#create-element-template').content.querySelector('.element'); 
 
+
+const handleDeleteCard = (event) => {
+  event.target.closest('.element').remove(); // для ближайшего элемента по селектору
+}
+
+
+const handleLikeCard = (event) => {
+  event.target.closest('.element__like').classList.toggle('element__like_active'); // для ближайшего элемента по селектору
+}
+
 // Генерация карточки
 const generateCard = (dataCard) => {
   const newCard = ElementTemplate.cloneNode(true);
@@ -61,6 +71,14 @@ const generateCard = (dataCard) => {
   const linkInCard = newCard.querySelector('.element__image');
   linkInCard.src = dataCard.link;
   linkInCard.alt = dataCard.name;
+
+  //добавим удаление карточки
+  const deleteBtn = newCard.querySelector('.element__delete'); // Кнопка удаления
+  deleteBtn.addEventListener('click', handleDeleteCard);
+
+  //добавим лайк карточки
+  const likeBtn = newCard.querySelector('.element__button'); // Кнопка нравится
+  likeBtn.addEventListener('click', handleLikeCard);
 
   return newCard;
 };
