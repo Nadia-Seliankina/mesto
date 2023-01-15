@@ -53,6 +53,12 @@
 @import url(../blocks/form-edit/__item/form-edit__item.css);
 @import url(../blocks/form-edit/__button-save/form-edit__button-save.css);
 
+/* form-add*/
+@import url(../blocks/form-add/form-add.css);
+@import url(../blocks/form-add/_opened/form-add_opened.css);
+@import url(../blocks/form-add/__container/form-add__container.css);
+@import url(../blocks/form-add/__heading/form-add__heading.css);
+
 
 /* Основной код для разрешения 1280px */
 /* стили для стандартных компьютеров и ноутбуков */
