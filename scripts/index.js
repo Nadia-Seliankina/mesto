@@ -16,13 +16,12 @@ const popupElementAdd= document.querySelector('.form-add');
 const popupCloseButtonElementAdd = popupElementAdd.querySelector('.form-edit__button-close');
 const popupOpenButtonElementAdd = document.querySelector('.profile__add-button');
 
-const addNewElement = document.querySelector('.elements__list');
-const createElementTemplate = document.querySelector('#create-element-template').content.querySelector('.element');
-const formNewElement = document.querySelector('#add-item');
-const formNewElementInputName = document.querySelector('[name="input-place"]');
-const formNewElementInputLink = formNewElement.querySelector('[name="input-link"]');
+const elementsContainer = document.querySelector('.elements__list'); // Ul куда вставляем элементы
+const formNewElement = document.querySelector('#add-item'); // form внутри popup
+const InputPlace = document.querySelector('[name="input-place"]'); // inpit внутри popup
+const InputLink = formNewElement.querySelector('[name="input-link"]'); // inpit внутри popup
 
-//карточки, которые добавит JavaScript
+//карточки, которые добавит JavaScript - приходят с бэкенда
 const initialCards = [
     {
       name: 'Архыз',
@@ -50,44 +49,48 @@ const initialCards = [
     }
 ];
 
+// Получить шаблон
+const ElementTemplate = document.querySelector('#create-element-template').content.querySelector('.element'); 
 
+// Генерация карточки
+const generateCard = (dataCard) => {
+  const newCard = ElementTemplate.cloneNode(true);
+  // добавим необходимые значения
+  const nameInCard = newCard.querySelector('.element__title');
+  nameInCard.textContent = dataCard.name;
+  const linkInCard = newCard.querySelector('.element__image');
+  linkInCard.src = dataCard.link;
+  linkInCard.alt = dataCard.name;
 
-// Динамическое создание элемента
-function createElement(item) {
-  // TEMPLATE
-  const NewElement = createElementTemplate.cloneNode(true);
-  const NewElementName = NewElement.querySelector('.element__title');
-  NewElementName.textContent = item.name;
-  const NewElementLink = NewElement.querySelector('.element__image');
-  NewElementLink.src = item.link;
-  NewElementLink.alt = item.name;
+  return newCard;
+};
 
-  return NewElement
-}
+// Добавление карточки
+const renderCard = (dataCard) => {
+  elementsContainer.prepend(generateCard(dataCard));
+};
 
-const renderNewElement = (item, wrapElement) => {
-  const element  = createElement(item);
-  wrapElement.append(element);
-  //addNewElement.append(element);
-}
-
-initialCards.forEach(function(item) {
-  renderNewElement(item, addNewElement);
+// Рендер всех карточек
+initialCards.forEach((dataCard) => {
+  renderCard(dataCard);
 });
 
+
 // Создание динамического объекта из формы - Обработчик отправки формы
-const handleFormSubmit = (e) => {
-  e.preventDefault();
-  const NewElementSubmit = {
-    name: formNewElementInputName.value,
-    link: formNewElementInputLink.value
-  }
-  
-  renderNewElement(NewElementSubmit, addNewElement);
+const formSubmitHandlerAddElement = (event) => {
+  event.preventDefault();
+  console.log('Submit Add Element');
+  const placeOfUser = InputPlace.value;
+  const linkOfUser = InputLink.value;
+  renderCard({
+    name: placeOfUser, 
+    link: linkOfUser
+  });
+  // очистим инпут после ввода
+  InputPlace.value = '';
+  InputLink.value = '';
 
-  //NewElementName.textContent = formNewElementInputName.value;
-  //NewElementLink.content = formNewElementInputLink.value;
-
+  closePopupAdd();
 };
 
 
@@ -138,4 +141,4 @@ popupElement.addEventListener('submit', formSubmitHandler);
 popupOpenButtonElementAdd.addEventListener('click', openPopupAdd);
 popupCloseButtonElementAdd.addEventListener('click', closePopupAdd);
 
-formNewElement.addEventListener('submit', handleFormSubmit);
+formNewElement.addEventListener('submit', formSubmitHandlerAddElement);
