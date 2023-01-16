@@ -23,7 +23,7 @@ const InputLink = formNewElement.querySelector('[name="input-link"]'); // inpit 
 
 // Делаем выборку DOM элементов для открытия и закрытия большой картинки
 const popupBigImage = document.querySelector('.big-image'); // Весь попап
-const popupBigImageClose = popupBigImage.querySelector('.form-edit__button-close'); // Кнопка закрытия
+const popupBigImageClose = popupBigImage.querySelector('.big-image__button-close'); // Кнопка закрытия
 
 //карточки, которые добавит JavaScript - приходят с бэкенда
 const initialCards = [

@@ -62,6 +62,8 @@
 @import url(../blocks/big-image/__container/big-image__container.css);
 @import url(../blocks/big-image/__photo/big-image__photo.css);
 @import url(../blocks/big-image/__title/big-image__title.css);
+@import url(../blocks/big-image/__button-close/big-image__button-close.css);
+@import url(../blocks/big-image/__button-image/big-image__button-image.css);
 
 /* Основной код для разрешения 1280px */
 /* стили для стандартных компьютеров и ноутбуков */
