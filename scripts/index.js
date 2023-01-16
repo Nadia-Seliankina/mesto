@@ -12,7 +12,7 @@ let activityInput = document.querySelector('#item-activity');
 let saveElement = document.querySelector('.form-edit__button-save');
 
 // Делаем выборку DOM элементов для формы добавления новой карточки
-const popupElementAdd= document.querySelector('.form-add');
+const popupElementAdd= document.querySelector('#form-add');
 const popupCloseButtonElementAdd = popupElementAdd.querySelector('.form-edit__button-close');
 const popupOpenButtonElementAdd = document.querySelector('.profile__add-button');
 
@@ -155,12 +155,12 @@ const closePopup = function closePopup() {
 
 // Открытие и закрытие формы добавления новой карточки
 const openPopupAdd = function openPopupAdd() { 
-  popupElementAdd.classList.add('form-add_opened');
+  popupElementAdd.classList.add('form-edit_opened');
   console.log('Open popup clicked');
 }
 
 const closePopupAdd = function closePopupAdd() { 
-  popupElementAdd.classList.remove('form-add_opened');
+  popupElementAdd.classList.remove('form-edit_opened');
   console.log('Close popup clicked');
 }
 
