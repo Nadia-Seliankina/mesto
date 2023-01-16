@@ -21,6 +21,10 @@ const formNewElement = document.querySelector('#add-item'); // form внутри
 const InputPlace = document.querySelector('[name="input-place"]'); // inpit внутри popup
 const InputLink = formNewElement.querySelector('[name="input-link"]'); // inpit внутри popup
 
+// Делаем выборку DOM элементов для открытия и закрытия большой картинки
+const popupBigImage = document.querySelector('.big-image'); // Весь попап
+const popupBigImageClose = popupBigImage.querySelector('.form-edit__button-close'); // Кнопка закрытия
+
 //карточки, которые добавит JavaScript - приходят с бэкенда
 const initialCards = [
     {
@@ -62,6 +66,11 @@ const handleLikeCard = (event) => {
   event.target.closest('.element__like').classList.toggle('element__like_active'); // для ближайшего элемента по селектору
 }
 
+const openPopupBigImage = function openPopupBigImage() {
+  popupBigImage.classList.add('big-image_opened');
+  console.log('Open big image');
+}
+
 // Генерация карточки
 const generateCard = (dataCard) => {
   const newCard = ElementTemplate.cloneNode(true);
@@ -79,6 +88,18 @@ const generateCard = (dataCard) => {
   //добавим лайк карточки
   const likeBtn = newCard.querySelector('.element__button'); // Кнопка нравится
   likeBtn.addEventListener('click', handleLikeCard);
+
+  //добавим открытие большой фотографии
+  const openBigImage = newCard.querySelector('.element__image-button'); // Кнопка открытия попапа
+  const bigImage = document.querySelector('.big-image__photo'); // Большое фото
+  const titleImage = document.querySelector('.big-image__title'); // Подпись к фото
+
+  openBigImage.addEventListener('click', function(event) {
+    openPopupBigImage();
+    // добавим необходимые значения
+    bigImage.src = dataCard.link;
+    titleImage.textContent = dataCard.name;
+  });
 
   return newCard;
 };
@@ -110,6 +131,12 @@ const formSubmitHandlerAddElement = (event) => {
 
   closePopupAdd();
 };
+
+// Закрытие большой фотографии
+const closeBigImage = function closeBigImage() {
+  popupBigImage.classList.remove('big-image_opened');
+  console.log('Close big image');
+}
 
 
 // Открытие и закрытие формы редактирования профиля
@@ -160,3 +187,5 @@ popupOpenButtonElementAdd.addEventListener('click', openPopupAdd);
 popupCloseButtonElementAdd.addEventListener('click', closePopupAdd);
 
 formNewElement.addEventListener('submit', formSubmitHandlerAddElement);
+
+popupBigImageClose.addEventListener('click', closeBigImage);

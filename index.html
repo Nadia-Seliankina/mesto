@@ -35,66 +35,7 @@
       </section>
       <section class="elements">
         <ul class="elements__list">
-          <!--<li class="element">
-            <img class="element__image" src="./images/anton-maksimov-teberda-unsplash.jpg" 
-            alt="Теберда">
-            <div class="element__group">
-              <h2 class="element__title">Теберда</h2>
-              <button name="button-like" type="button" class="element__button" aria-label="Нравится">
-                <img class="element__like" src="./images/Vector.svg" alt="Нравится">
-              </button>
-            </div>
-          </li>
-          <li class="element">
-            <img class="element__image" src="./images/kirill-pershin-Elbrus.jpg" 
-            alt="Гора Эльбрус">
-            <div class="element__group">
-              <h2 class="element__title">Гора Эльбрус</h2>
-              <button name="button-like" type="button" class="element__button" aria-label="Нравится">
-                <img class="element__like" src="./images/Vector.svg" alt="Нравится">
-              </button>
-            </div>
-          </li>
-          <li class="element">
-            <img class="element__image" src="./images/kirill-pershin-Dombai.jpg" 
-            alt="Домбай">
-            <div class="element__group">
-              <h2 class="element__title">Домбай</h2>
-              <button name="button-like" type="button" class="element__button" aria-label="Нравится">
-                <img class="element__like" src="./images/Vector.svg" alt="Нравится">
-              </button>
-            </div>
-          </li>
-          <li class="element">
-            <img class="element__image" src="./images/nikolay-vorobyev-Sudak-unsplash.jpg" 
-            alt="Судак">
-            <div class="element__group">
-              <h2 class="element__title">Судак</h2>
-              <button name="button-like" type="button" class="element__button" aria-label="Нравится">
-                <img class="element__like" src="./images/Vector.svg" alt="Нравится">
-              </button>
-            </div>
-          </li>
-          <li class="element">
-            <img class="element__image" src="./images/sergey-pesterev-Olkhon-unsplash.jpg" 
-            alt="Ольхон">
-            <div class="element__group">
-              <h2 class="element__title">Ольхон</h2>
-              <button name="button-like" type="button" class="element__button" aria-label="Нравится">
-                <img class="element__like" src="./images/Vector.svg" alt="Нравится">
-              </button>
-            </div>
-          </li>
-          <li class="element">
-            <img class="element__image" src="./images/kirill-pershin-Karachaevsk.jpg" 
-            alt="Карачаево-Черкесия">
-            <div class="element__group">
-              <h2 class="element__title">Карачаево-Черкесия</h2>
-              <button name="button-like" type="button" class="element__button" aria-label="Нравится">
-                <img class="element__like" src="./images/Vector.svg" alt="Нравится">
-              </button>
-            </div>
-          </li> -->
+          <!-- Вставка из template-->
         </ul>
       </section>
     </main>
@@ -141,11 +82,23 @@
         </button>
       </div>
     </section>
+    <!-- Pop-up big image-->
+    <section class="big-image">
+      <div class="big-image__container">
+        <img class="big-image__photo" src="./images/anton-maksimov-teberda-unsplash.jpg" alt="Фото места">
+        <h2 class="big-image__title">Фото места</h2>
+        <button name="button-close" type="button" class="form-edit__button-close" aria-label="Закрыть">
+          <img class="form-edit__button-image" src="./images/Close-Icon.svg" alt="Закрыть">
+        </button>
+      </div>
+    </section>
     <!-- template new element-->
     <template id="create-element-template">
       <li class="element">
-        <img class="element__image" src="./images/anton-maksimov-teberda-unsplash.jpg" 
-        alt="Фото места">
+        <button class="element__image-button" name="image-button" type="button" aria-label="Открыть фото">
+          <img class="element__image" src="./images/anton-maksimov-teberda-unsplash.jpg" 
+          alt="Фото места">
+        </button>
         <div class="element__group">
           <h2 class="element__title"></h2>
           <button name="button-like" type="button" class="element__button" aria-label="Нравится">

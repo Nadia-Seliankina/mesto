@@ -1,0 +1,4 @@
+.big-image_opened {
+    display: grid;
+    z-index: 5;
+}

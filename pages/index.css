@@ -31,6 +31,7 @@
 /* element */
 @import url(../blocks/element/element.css);
 @import url(../blocks/element/__image/element__image.css);
+@import url(../blocks/element/__image-button/element__image-button.css);
 @import url(../blocks/element/__group/element__group.css);
 @import url(../blocks/element/__title/element__title.css);
 @import url(../blocks/element/__button/element__button.css);
@@ -61,6 +62,12 @@
 @import url(../blocks/form-add/__container/form-add__container.css);
 @import url(../blocks/form-add/__heading/form-add__heading.css);
 
+/* Pop-up big image*/
+@import url(../blocks/big-image/big-image.css);
+@import url(../blocks/big-image/_opend/big-image_opened.css);
+@import url(../blocks/big-image/__container/big-image__container.css);
+@import url(../blocks/big-image/__photo/big-image__photo.css);
+@import url(../blocks/big-image/__title/big-image__title.css);
 
 /* Основной код для разрешения 1280px */
 /* стили для стандартных компьютеров и ноутбуков */
