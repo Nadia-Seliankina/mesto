@@ -1,4 +1,4 @@
-.big-image__container {
+.popup__container-big-image {
     grid-template-columns: min-content;
     grid-template-rows: min-content;
     display: grid;

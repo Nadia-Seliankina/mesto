@@ -1,4 +1,4 @@
-.form-edit__button-save {
+.popup__button-save {
     background: #000000;
     border-radius: 2px;
     border: none;
@@ -15,13 +15,13 @@
     margin-top: 48px;
 }
 
-.form-edit__button-save:hover {
+.popup__button-save:hover {
     background: rgba(0, 0, 0, 0.8);
     cursor: pointer;
 }
 
 @media screen and (max-width: 1024px) {
-    .form-edit__button-save {
+    .popup__button-save {
         height: 46px;
         font-size: 14px;
         line-height: 1.214;

@@ -1,31 +1,32 @@
 // Делаем выборку DOM элементов для редактирования профиля / Найдём селектор на странице
-const popupElement = document.querySelector('.form-edit');
-const popupCloseButtonElement = popupElement.querySelector('.form-edit__button-close');
-const popupOpenButtonElement = document.querySelector('.profile__edit-button');
+const popupEdit = document.querySelector('#popup-edit'); // попап редактирования профиля
+const popupEditForm = popupEdit.querySelector('[name="form-edit-profile"]');
+const popupEditButtonClose = popupEdit.querySelector('#popup-edit-button-close');
+const profileButtonEdit = document.querySelector('.profile__edit-button');
 
-let nameProfile = document.querySelector('.profile__name');
-let activityProfile = document.querySelector('.profile__activity');
+const profileName = document.querySelector('.profile__name');
+const profileActivity = document.querySelector('.profile__activity');
 
-let nameInput = document.querySelector('#item-name');
-let activityInput = document.querySelector('#item-activity');
-
-let saveElement = document.querySelector('.form-edit__button-save');
+const inputName = document.querySelector('#input-name');
+const inputActivity = document.querySelector('#input-activity');
 
 // Делаем выборку DOM элементов для формы добавления новой карточки
-const popupElementAdd= document.querySelector('#form-add');
-const popupCloseButtonElementAdd = popupElementAdd.querySelector('.form-edit__button-close');
-const popupOpenButtonElementAdd = document.querySelector('.profile__add-button');
+const popupAdd= document.querySelector('#popup-add'); //попап добавления карточки
+const popupAddButtonClose = popupAdd.querySelector('#popup-add-button-close');
+const profileAddButton = document.querySelector('.profile__add-button');
 
 const elementsContainer = document.querySelector('.elements__list'); // Ul куда вставляем элементы
-const formNewElement = document.querySelector('#add-item'); // form внутри popup
-const InputPlace = document.querySelector('[name="input-place"]'); // inpit внутри popup
-const InputLink = formNewElement.querySelector('[name="input-link"]'); // inpit внутри popup
+const formNewElement = document.querySelector('#form-add-item'); // form внутри popup
+const inputPlace = document.querySelector('[name="input-place"]'); // inpit внутри popup
+const inputLink = formNewElement.querySelector('[name="input-link"]'); // inpit внутри popup
 
 // Делаем выборку DOM элементов для открытия и закрытия большой картинки
-const popupBigImage = document.querySelector('.big-image'); // Весь попап
-const popupBigImageClose = popupBigImage.querySelector('.big-image__button-close'); // Кнопка закрытия
+const popupBigImage = document.querySelector('#popup-big-image'); // Весь попап
+const popupBigImageButtonClose = popupBigImage.querySelector('#popup-image-button-close'); // Кнопка закрытия
+const bigImage = document.querySelector('.popup__big-photo'); // Большое фото
+const titleImage = document.querySelector('.popup__title-big-image'); // Подпись к фото
 
-//карточки, которые добавит JavaScript - приходят с бэкенда
+//карточки, которые добавит JavaScript. В будущем будем получать карточки с бэкэнда.
 const initialCards = [
     {
       name: 'Архыз',
@@ -54,26 +55,23 @@ const initialCards = [
 ];
 
 // Получить шаблон
-const ElementTemplate = document.querySelector('#create-element-template').content.querySelector('.element'); 
-
+const elementTemplate = document.querySelector('#create-element-template').content.querySelector('.element'); 
 
 const handleDeleteCard = (event) => {
   event.target.closest('.element').remove(); // для ближайшего элемента по селектору
 }
 
-
 const handleLikeCard = (event) => {
   event.target.closest('.element__like').classList.toggle('element__like_active'); // для ближайшего элемента по селектору
 }
 
-const openPopupBigImage = function openPopupBigImage() {
-  popupBigImage.classList.add('big-image_opened');
-  console.log('Open big image');
+const openPopupBigImage = () => {
+  openPopup(popupBigImage);
 }
 
 // Генерация карточки
 const generateCard = (dataCard) => {
-  const newCard = ElementTemplate.cloneNode(true);
+  const newCard = elementTemplate.cloneNode(true);
   // добавим необходимые значения
   const nameInCard = newCard.querySelector('.element__title');
   nameInCard.textContent = dataCard.name;
@@ -90,15 +88,14 @@ const generateCard = (dataCard) => {
   likeBtn.addEventListener('click', handleLikeCard);
 
   //добавим открытие большой фотографии
-  const openBigImage = newCard.querySelector('.element__image-button'); // Кнопка открытия попапа
-  const bigImage = document.querySelector('.big-image__photo'); // Большое фото
-  const titleImage = document.querySelector('.big-image__title'); // Подпись к фото
-
-  openBigImage.addEventListener('click', function(event) {
+  const openBigImageBtn = newCard.querySelector('.element__image-button'); // Кнопка открытия попапа
+  
+  openBigImageBtn.addEventListener('click', function(event) {
     openPopupBigImage();
     // добавим необходимые значения
     bigImage.src = dataCard.link;
     titleImage.textContent = dataCard.name;
+    bigImage.alt = dataCard.name;
   });
 
   return newCard;
@@ -114,78 +111,76 @@ initialCards.forEach((dataCard) => {
   renderCard(dataCard);
 });
 
-
 // Создание динамического объекта из формы - Обработчик отправки формы
 const formSubmitHandlerAddElement = (event) => {
   event.preventDefault();
-  console.log('Submit Add Element');
-  const placeOfUser = InputPlace.value;
-  const linkOfUser = InputLink.value;
+  
+  const placeOfUser = inputPlace.value;
+  const linkOfUser = inputLink.value;
   renderCard({
     name: placeOfUser, 
     link: linkOfUser
   });
   // очистим инпут после ввода
-  InputPlace.value = '';
-  InputLink.value = '';
+  formNewElement.reset()
 
   closePopupAdd();
 };
 
+//Универсальная функция открытия попапов
+function openPopup(popupElement) {
+  popupElement.classList.add('popup_opened');
+};
+
+//Универсальная функция закрытия попапов
+function closePopup(popupElement) {
+  popupElement.classList.remove('popup_opened');
+};
+
 // Закрытие большой фотографии
-const closeBigImage = function closeBigImage() {
-  popupBigImage.classList.remove('big-image_opened');
-  console.log('Close big image');
+const closeBigImage = () => {
+  closePopup(popupBigImage);
 }
 
-
-// Открытие и закрытие формы редактирования профиля
-const openPopup = function openPopup() { 
-    popupElement.classList.add('form-edit_opened');
-    console.log('Open popup clicked');
-    //копирование текста в форму из профиля при открытии
-    nameInput.value = nameProfile.textContent;
-    activityInput.value = activityProfile.textContent;
+// Открытие формы редактирования профиля
+const openPopupEdit = () => {
+  openPopup(popupEdit);
+  //копирование текста в форму из профиля при открытии
+  inputName.value = profileName.textContent;
+  inputActivity.value = profileActivity.textContent;
 }
 
-const closePopup = function closePopup() { 
-    popupElement.classList.remove('form-edit_opened');
-    console.log('Close popup clicked');
+// Закрытие формы редактирования профиля
+const closePopupEdit = () => {
+  closePopup(popupEdit);
 }
 
-// Открытие и закрытие формы добавления новой карточки
-const openPopupAdd = function openPopupAdd() { 
-  popupElementAdd.classList.add('form-edit_opened');
-  console.log('Open popup clicked');
+// Открытие формы добавления новой карточки
+const openPopupAdd = () => {
+  openPopup(popupAdd);
 }
 
-const closePopupAdd = function closePopupAdd() { 
-  popupElementAdd.classList.remove('form-edit_opened');
-  console.log('Close popup clicked');
+const closePopupAdd = () => {
+  closePopup(popupAdd);
 }
 
-
-// Обработчик «отправки» формы
-// Эта строчка отменяет стандартную отправку формы.
-// Так мы можем определить свою логику отправки.
-function formSubmitHandler (evt) {
-    evt.preventDefault();
-    nameProfile.textContent = nameInput.value;
-    activityProfile.textContent = activityInput.value;
-    closePopup();
+// Обработчик «отправки» формы редактирования профиля
+function formEditSubmitHandler (evt) {
+    evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
+    profileName.textContent = inputName.value;
+    profileActivity.textContent = inputActivity.value;
+    closePopupEdit();
 }
-
-
 
 // Регистрируем обработчики событий по клику
-popupOpenButtonElement.addEventListener('click', openPopup);
-popupCloseButtonElement.addEventListener('click', closePopup);
+profileButtonEdit.addEventListener('click', openPopupEdit);
+popupEditButtonClose.addEventListener('click', closePopupEdit);
 
-popupElement.addEventListener('submit', formSubmitHandler);
+popupEditForm.addEventListener('submit', formEditSubmitHandler);
 
-popupOpenButtonElementAdd.addEventListener('click', openPopupAdd);
-popupCloseButtonElementAdd.addEventListener('click', closePopupAdd);
+profileAddButton.addEventListener('click', openPopupAdd);
+popupAddButtonClose.addEventListener('click', closePopupAdd);
 
 formNewElement.addEventListener('submit', formSubmitHandlerAddElement);
 
-popupBigImageClose.addEventListener('click', closeBigImage);
+popupBigImageButtonClose.addEventListener('click', closeBigImage);

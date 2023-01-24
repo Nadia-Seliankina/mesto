@@ -44,26 +44,23 @@
 @import url(../blocks/footer/footer.css);
 @import url(../blocks/footer/__text/footer__text.css);
 
-/* form-edit*/
-@import url(../blocks/form-edit/form-edit.css);
-@import url(../blocks/form-edit/_opened/form-edit_opened.css);
-@import url(../blocks/form-edit/__form/form-edit__form.css);
-@import url(../blocks/form-edit/__container/form-edit__container.css);
-@import url(../blocks/form-edit/__button-close/form-edit__button-close.css);
-@import url(../blocks/form-edit/__button-image/form-edit__button-image.css);
-@import url(../blocks/form-edit/__heading/form-edit__heading.css);
-@import url(../blocks/form-edit/__input/form-edit__input.css);
-@import url(../blocks/form-edit/__item/form-edit__item.css);
-@import url(../blocks/form-edit/__button-save/form-edit__button-save.css);
+/* popup*/
+@import url(../blocks/popup/popup.css);
+@import url(../blocks/popup/_opened/popup_opened.css);
+@import url(../blocks/popup/__container/popup__container.css);
+@import url(../blocks/popup/__heading/popup__heading.css);
+@import url(../blocks/popup/__form/popup__form.css);
+@import url(../blocks/popup/__input/popup__input.css);
+@import url(../blocks/popup/__item/popup__item.css);
+@import url(../blocks/popup/__button-save/popup__button-save.css);
+@import url(../blocks/popup/__button-close/popup__button-close.css);
+@import url(../blocks/popup/__button-image/popup__button-image.css);
+/* big image*/
+@import url(../blocks/popup/__container-big-image/popup__container-big-image.css);
+@import url(../blocks/popup/__big-photo/popup__big-photo.css);
+@import url(../blocks/popup/__title-big-image/popup__title-big-image.css);
 
-/* Pop-up big image*/
-@import url(../blocks/big-image/big-image.css);
-@import url(../blocks/big-image/_opend/big-image_opened.css);
-@import url(../blocks/big-image/__container/big-image__container.css);
-@import url(../blocks/big-image/__photo/big-image__photo.css);
-@import url(../blocks/big-image/__title/big-image__title.css);
-@import url(../blocks/big-image/__button-close/big-image__button-close.css);
-@import url(../blocks/big-image/__button-image/big-image__button-image.css);
+
 
 /* Основной код для разрешения 1280px */
 /* стили для стандартных компьютеров и ноутбуков */

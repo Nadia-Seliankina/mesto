@@ -1,5 +1,8 @@
 .element__image {
   max-width: 100%;
+  color: white;
   object-fit: cover;
   aspect-ratio: 1/1;
+  display: block;
+  object-position: center;
 }
