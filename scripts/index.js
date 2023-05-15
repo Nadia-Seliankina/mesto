@@ -120,7 +120,7 @@ const handleCardFormSubmit = (event) => {
   // очистим инпут после ввода
   formNewElement.reset()
 
-  closePopupAdd();
+  closePopup(popupAdd);
 };
 
 //Универсальная функция открытия попапов
@@ -133,11 +133,6 @@ function closePopup(popupElement) {
   popupElement.classList.remove('popup_opened');
 };
 
-// Закрытие большой фотографии
-const closeBigImage = () => {
-  closePopup(popupBigImage);
-}
-
 // Открытие формы редактирования профиля
 const openPopupEdit = () => {
   openPopup(popupEdit);
@@ -146,18 +141,9 @@ const openPopupEdit = () => {
   inputActivity.value = profileActivity.textContent;
 }
 
-// Закрытие формы редактирования профиля
-const closePopupEdit = () => {
-  closePopup(popupEdit);
-}
-
 // Открытие формы добавления новой карточки
 const openPopupAdd = () => {
   openPopup(popupAdd);
-}
-
-const closePopupAdd = () => {
-  closePopup(popupAdd);
 }
 
 // Обработчик «отправки» формы редактирования профиля
@@ -165,7 +151,7 @@ function handleProfileFormSubmit (evt) {
     evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
     profileName.textContent = inputName.value;
     profileActivity.textContent = inputActivity.value;
-    closePopupEdit();
+    closePopup(popupEdit);
 }
 
 // Регистрируем обработчики событий по клику
