@@ -111,8 +111,8 @@ const renderCard = (dataCard) => {
 initialCards.forEach(renderCard);
 
 // Создание динамического объекта из формы - Обработчик отправки формы
-const handleCardFormSubmit = (event) => {
-  event.preventDefault();
+const handleCardFormSubmit = (evt) => {
+  evt.preventDefault();
   
   const placeOfUser = inputPlace.value;
   const linkOfUser = inputLink.value;
@@ -128,7 +128,6 @@ const handleCardFormSubmit = (event) => {
 
 //закрытие попапов при клике на фон
 const closePopupByOverlay = (evt) => {
-  evt.preventDefault();
   if (evt.target === evt.currentTarget) {
     const popupOpened = document.querySelector('.popup_opened');
     closePopup(popupOpened);
@@ -138,7 +137,6 @@ const closePopupByOverlay = (evt) => {
 
 // закрытие попапов при нажатии ESC
 const closePopupByEsc = (evt) => {
-  evt.preventDefault();
   if(evt.key === 'Escape') {
     const popupOpened = document.querySelector('.popup_opened');
     closePopup(popupOpened);
