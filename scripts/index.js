@@ -68,6 +68,8 @@ const openPopupBigImage = () => {
   openPopup(popupBigImage);
 }
 
+
+
 // Генерация карточки
 const generateCard = (dataCard) => {
   const newCard = elementTemplate.cloneNode(true);
@@ -124,12 +126,13 @@ const handleCardFormSubmit = (event) => {
   closePopup(popupAdd);
 };
 
-// закрытие попапов при клике на фон
+//закрытие попапов при клике на фон
 const closePopupByOverlay = (evt) => {
   evt.preventDefault();
   if (evt.target === evt.currentTarget) {
     const popupOpened = document.querySelector('.popup_opened');
     closePopup(popupOpened);
+    console.log('click');
   }
 }
 
@@ -139,21 +142,21 @@ const closePopupByEsc = (evt) => {
   if(evt.key === 'Escape') {
     const popupOpened = document.querySelector('.popup_opened');
     closePopup(popupOpened);
+    console.log('esc');
   }
-  
 }
 
 //Универсальная функция открытия попапов
 function openPopup(popupElement) {
   popupElement.classList.add('popup_opened');
-  popupElement.addEventListener('click',closePopupByOverlay);
+  popupElement.addEventListener('click', closePopupByOverlay);
   document.addEventListener('keydown', closePopupByEsc);
 };
 
 //Универсальная функция закрытия попапов
 function closePopup(popupElement) {
   popupElement.classList.remove('popup_opened');
-  popupElement.removeEventListener('click',closePopupByOverlay);
+  popupElement.removeEventListener('click', closePopupByOverlay);
   document.removeEventListener('keydown', closePopupByEsc);
 };
 
