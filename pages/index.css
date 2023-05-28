@@ -51,10 +51,16 @@
 @import url(../blocks/popup/__heading/popup__heading.css);
 @import url(../blocks/popup/__form/popup__form.css);
 @import url(../blocks/popup/__input/popup__input.css);
-@import url(../blocks/popup/__item/popup__item.css);
+@import url(../blocks/popup/__input/_state/popup__input_state_invalid.css);
+@import url(../blocks/popup/__fieldset/popup__fieldset.css);
 @import url(../blocks/popup/__button-save/popup__button-save.css);
+@import url(../blocks/popup/__button-save/popup__button-save_invalid.css);
 @import url(../blocks/popup/__button-close/popup__button-close.css);
 @import url(../blocks/popup/__button-image/popup__button-image.css);
+@import url(../blocks/popup/__error/popup__error.css);
+@import url(../blocks/popup/__error/_num/popup__error_num_1.css);
+@import url(../blocks/popup/__error/_num/popup__error_num_2.css);
+
 /* big image*/
 @import url(../blocks/popup/__container-big-image/popup__container-big-image.css);
 @import url(../blocks/popup/__big-photo/popup__big-photo.css);
