@@ -132,7 +132,7 @@ closeButtons.forEach((button) => {
 
 //Для каждой проверяемой формы создаём экземпляр класса FormValidator
 // Валидация
-const FormValidatorAdd = new FormValidator(configFormSelector, formNewElement);
-const FormValidatorEdit = new FormValidator(configFormSelector, popupEditForm);
-FormValidatorAdd.enableValidation();
-FormValidatorEdit.enableValidation();
+const validatorAddCard = new FormValidator(configFormSelector, formNewElement);
+const validatorEditProfile = new FormValidator(configFormSelector, popupEditForm);
+validatorAddCard.enableValidation();
+validatorEditProfile.enableValidation();

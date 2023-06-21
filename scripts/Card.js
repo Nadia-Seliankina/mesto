@@ -56,10 +56,12 @@ export class Card {
     generateCard() {
         // Запишем разметку в приватное поле _element. Так у других элементов появится доступ к ней.
         this._view = this._getTemplate();
+
+        this._element__image = this._view.querySelector('.element__image');
         // добавим необходимые значения
         this._view.querySelector('.element__title').textContent = this._name;
-        this._view.querySelector('.element__image').src = this._link;
-        this._view.querySelector('.element__image').alt = this._name;
+        this._element__image.src = this._link;
+        this._element__image.alt = this._name;
   
         //добавим удаление карточки
         this._deleteBtn = this._view.querySelector('.element__delete'); // Кнопка удаления
