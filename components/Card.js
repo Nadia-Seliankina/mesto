@@ -1,13 +1,15 @@
-//import { openPopup } from './index.js' // Доступ к универсальной функции из основного файла js
+import { PopupWithImage } from './PicturePopup.js'
+import { initialCards, 
+    popupBigImage } from '../utils/constants.js'
 
 export class Card {
-    // в конструкторе будут динамические данные,
-    // для каждого экземпляра свои
-    constructor(dataCard, templateSelector, openPopup) { // Работа класса с разными шаблонами
+    // в конструкторе будут динамические данные, для каждого экземпляра свои
+    constructor(dataCard, templateSelector, handleCardClick) { // Работа класса с разными шаблонами
         this._name = dataCard.name;
         this._link = dataCard.link;
         this._templateSelector = templateSelector;
-        this._openPopup = openPopup;
+        this._handleCardClick = handleCardClick;
+        //handleCardClick - функция открывает попап с картинкой при клике на карточку
     }
 
     // Получить шаблон
@@ -43,12 +45,8 @@ export class Card {
     // Попап
     _setEventListenersPopup() {
         this._openBigImageBtn.addEventListener('click', () => {
-            // добавим необходимые значения
-            this._bigImage.src = this._link;
-            this._titleImage.textContent = this._name;
-            this._bigImage.alt = this._name;
-            
-            this._openPopup();
+            // добавим необходимые значения и откроем попап
+            this._handleCardClick();
         });
     }
 
@@ -74,8 +72,8 @@ export class Card {
         //добавим открытие большой фотографии
         this._openBigImageBtn = this._view.querySelector('.element__image-button'); // Кнопка открытия попапа
         // Делаем выборку DOM элементов для открытия и закрытия большой картинки
-        this._bigImage = document.querySelector('.popup__big-photo'); // Большое фото
-        this._titleImage = document.querySelector('.popup__title-big-image'); // Подпись к фото
+        //this._bigImage = document.querySelector('.popup__big-photo'); // Большое фото
+        //this._titleImage = document.querySelector('.popup__title-big-image'); // Подпись к фото
 
         this._setEventListenersPopup();
 
