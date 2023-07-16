@@ -2,8 +2,8 @@ import { closeButtons } from '../utils/constants.js'
 
 //открытие и закрытие попапа
 export class Popup {
-    //constructor({ popupSelector })
-    constructor(popupSelector) {
+    //constructor(popupSelector)
+    constructor({ popupSelector }) {
         this._selector = document.querySelector(popupSelector);
     }
 

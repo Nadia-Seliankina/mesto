@@ -12,12 +12,12 @@
     <title>Mesto</title>
     <link rel="stylesheet" href="./pages/index.css">
     <script defer src="./pages/index.js" type="module"></script>
-    <script defer src="./components/Card.js" type="module"></script>
-    <script defer src="./components/FormValidator.js" type="module"></script>
-    <script defer src="./utils/constants.js" type="module"></script>
-    <script defer src="./components/Popup.js" type="module"></script>
-    <script defer src="./components/Section.js" type="module"></script>
-    <script defer src="./components/PicturePopup.js" type="module"></script>
+    <!--<script defer src="./components/Card.js" type="module"></script>-->
+    <!--<script defer src="./components/FormValidator.js" type="module"></script>-->
+    <!--<script defer src="./utils/constants.js" type="module"></script>-->
+    <!--<script defer src="./components/Popup.js" type="module"></script>-->
+    <!--<script defer src="./components/Section.js" type="module"></script>-->
+    <!--<script defer src="./components/PicturePopup.js" type="module"></script>-->
     <!--<link rel="icon" tipe="image" href="#">-->
   </head>
   <body class="page">
@@ -81,13 +81,13 @@
         <form class="popup__form" name="form-add-item" id="form-add-item" novalidate>
           <fieldset class="popup__fieldset">
             <!-- Получения данных о названии места -->
-            <input type="text" name="input-place" placeholder="Название" class="popup__input" 
-              id="input-place" required minlength="2" maxlength="30">
-            <span id="input-place-error" class="popup__error popup__error_num_1"></span>
+            <input type="text" name="name" placeholder="Название" class="popup__input" 
+              id="name" required minlength="2" maxlength="30">
+            <span id="name-error" class="popup__error popup__error_num_1"></span>
             <!-- Получения данных о ссылке на фото -->
-            <input type="url" name="input-link" placeholder="Ссылка на картинку" class="popup__input" 
-              id="input-link" required>
-            <span id="input-link-error" class="popup__error popup__error_num_2"></span>
+            <input type="url" name="link" placeholder="Ссылка на картинку" class="popup__input" 
+              id="link" required>
+            <span id="link-error" class="popup__error popup__error_num_2"></span>
           </fieldset>
           <button name="button-create" type="submit" class="popup__button-save" aria-label="Создать">
           Создать

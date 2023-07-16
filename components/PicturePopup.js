@@ -1,25 +1,18 @@
 import { Popup } from './Popup.js'
 
 export class PopupWithImage extends Popup {
-    constructor(popupSelector, dataCard) {
-        super(popupSelector);
-        this._name = dataCard.name;
-        this._link = dataCard.link;
+    constructor({ popupSelector }) {
+        super({ popupSelector });
     }
 
     // открытие попапа
-    open() {
-        //super.open(); // вызываем родительский метод
+    open(name, link) {
+        //перезаписывает родительский метод open
         this._selector.classList.add('popup_opened');
         this.setEventListeners();
 
-        // расширение функциональности родительского класса в наследнике
-        this._selector.querySelector('.popup__big-photo').src = this._link;
-        this._selector.querySelector('.popup__title-big-image').textContent = this._name;
-        this._selector.querySelector('.popup__big-photo').alt = this._name;
+        this._selector.querySelector('.popup__big-photo').src = link;
+        this._selector.querySelector('.popup__title-big-image').textContent = name;
+        this._selector.querySelector('.popup__big-photo').alt = name;
     }
 }
-
-//Этот класс должен перезаписывать родительский метод open. 
-//В методе open класса PopupWithImage нужно вставлять в попап 
-//картинку с src изображения и подписью к картинке.

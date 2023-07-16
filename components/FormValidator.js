@@ -54,7 +54,7 @@ export class FormValidator {
     // приватные методы, которые проверяют валидность поля
     // При наступлении события ввода в инпут проверяем его валидность
     _checkInputValidity(inputElement) {
-        console.log(inputElement.validitionMessege);
+        //console.log(inputElement.validitionMessege);
         this._isInputValid = inputElement.validity.valid;
 
         // Получаем элемент ошибки

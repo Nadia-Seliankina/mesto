@@ -46,7 +46,7 @@ export class Card {
     _setEventListenersPopup() {
         this._openBigImageBtn.addEventListener('click', () => {
             // добавим необходимые значения и откроем попап
-            this._handleCardClick();
+            this._handleCardClick(this._name, this._link);
         });
     }
 
@@ -71,10 +71,6 @@ export class Card {
       
         //добавим открытие большой фотографии
         this._openBigImageBtn = this._view.querySelector('.element__image-button'); // Кнопка открытия попапа
-        // Делаем выборку DOM элементов для открытия и закрытия большой картинки
-        //this._bigImage = document.querySelector('.popup__big-photo'); // Большое фото
-        //this._titleImage = document.querySelector('.popup__title-big-image'); // Подпись к фото
-
         this._setEventListenersPopup();
 
         // Вернём элемент наружу
