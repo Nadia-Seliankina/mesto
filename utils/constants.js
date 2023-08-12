@@ -36,8 +36,8 @@ export const profileButtonEdit = document.querySelector('.profile__edit-button')
 export const profileName = document.querySelector('.profile__name');
 export const profileActivity = document.querySelector('.profile__activity');
 
-export const inputName = document.querySelector('#input-name');
-export const inputActivity = document.querySelector('#input-activity');
+export const inputName = document.querySelector('#inputName');
+export const inputActivity = document.querySelector('#inputActivity');
 
 // Делаем выборку DOM элементов для формы добавления новой карточки
 export const popupAdd= document.querySelector('#popup-add'); //попап добавления карточки

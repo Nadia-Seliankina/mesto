@@ -27,7 +27,6 @@ export class Popup {
     setEventListeners() {
         // bind указывает значение this с которым эта функция будет вызываться для колл-бек функций
         this._handleOverlayCloseBound = this._handleOverlayClose.bind(this);
-        this._handleEscCloseBound = this._handleEscClose.bind(this);
         this.closeBound = this.close.bind(this);
 
         //Универсальный обработчик крестиков закрытия попапов
@@ -37,19 +36,21 @@ export class Popup {
         });
 
         this._selector.addEventListener('click', this._handleOverlayCloseBound);
-        document.addEventListener('keydown', this._handleEscCloseBound);
+        console.log('SETlistenerCLICK')
     }
 
     // удаляет слушатели
     _removeEventListeners() {
-        this._selector.removeEventListener('click', this._handleOverlayCloseBound);
+        this._handleEscCloseBound = this._handleEscClose.bind(this);
+
         document.removeEventListener('keydown', this._handleEscCloseBound);
+        console.log('REMOVElistener')
     }
 
     // открытие попапа
     open() {
         this._selector.classList.add('popup_opened');
-        this.setEventListeners();
+        document.addEventListener('keydown', this._handleEscCloseBound);
     }
 
     // закрытие попапа

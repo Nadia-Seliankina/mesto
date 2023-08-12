@@ -1,6 +1,6 @@
-import { PopupWithImage } from './PicturePopup.js'
-import { initialCards, 
-    popupBigImage } from '../utils/constants.js'
+//import { PopupWithImage } from './PicturePopup.js'
+//import { initialCards, 
+    //popupBigImage } from '../utils/constants.js'
 
 export class Card {
     // в конструкторе будут динамические данные, для каждого экземпляра свои

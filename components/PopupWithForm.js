@@ -1,5 +1,4 @@
 import { Popup } from './Popup.js'
-import { closeButtons } from '../utils/constants.js'
 
 export class PopupWithForm extends Popup {
     //Кроме селектора попапа принимает в конструктор колбэк сабмита формы.
@@ -24,8 +23,6 @@ export class PopupWithForm extends Popup {
         console.log(this._formValues);
         // возвращаем объект значений
         return this._formValues;
-        
-        
     }
 
     //Перезаписывает родительский метод setEventListeners. 

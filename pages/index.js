@@ -1,37 +1,26 @@
 // Импортируем из других файлов js
 import { Card } from '../components/Card.js'
 import { Section } from '../components/Section.js'
-import { Popup } from '../components/Popup.js'
 import { PopupWithImage } from '../components/PicturePopup.js'
 import { PopupWithForm } from '../components/PopupWithForm.js'
+import { UserInfo } from '../components/UserInfo.js'
 import { FormValidator, configFormSelector } from '../components/FormValidator.js'
 import { initialCards, 
-  popupEdit,
   popupEditForm,
-  closeButtons,
   profileButtonEdit,
-  profileName,
-  profileActivity,
   inputName,
   inputActivity,
-  popupAdd,
   profileAddButton,
   elementsContainer,
   formNewElement,
-  inputPlace,
-  inputLink,
-  popupBigImage 
+  popupEdit
 } from '../utils/constants.js'
 
 const windowBigImage = new PopupWithImage({ popupSelector: '#popup-big-image' });
 
-const windowEdit = new PopupWithForm({ 
-  popupSelector: '#popup-edit',
-  handleFormSubmit: handleProfileFormSubmit
-});
-
 const windowPopupAdd = new PopupWithForm({ 
   popupSelector: '#popup-add',
+  // при отправке формы создать экземпляр Card и добавить его на страницу
   // объект, который мы передадим при вызове handleFormSubmit
   // окажется на месте параметра formData
   handleFormSubmit: (formData) => {
@@ -50,6 +39,21 @@ const windowPopupAdd = new PopupWithForm({
 const openPopupBigImage = (name, link) => {
   windowBigImage.open(name, link);
 }
+
+const windowEdit = new PopupWithForm({ 
+  popupSelector: '#popup-edit',
+  // объект, который мы передадим при вызове handleFormSubmit
+  // окажется на месте параметра fromUser
+  handleFormSubmit: (formUser) => {
+    // Обработчик «отправки» формы редактирования профиля
+    userInfo.setUserInfo({
+      inputName: formUser.inputName,
+      inputActivity: formUser.inputActivity
+    })
+
+    windowEdit.close();
+  }
+});
 
 // Добавление карточки
 const renderCard = (dataCard) => {
@@ -70,58 +74,42 @@ const cardList = new Section({
 // отрисовка карточек
 cardList.renderItems();
 
-//инициализация формы
-//const formRenderer = new Section({ 
-  //items: []
-//}, elementsContainer);
+// Открытие формы добавления новой карточки
+const openPopupAdd = () => {
+  windowPopupAdd.open();
+  console.log('ADD-OPEN');
+  validatorAddCard.enableValidation();
+}
 
-// Создание динамического объекта из формы - Обработчик отправки формы.
-//при отправке формы создать экземпляр Card и добавить его на страницу
-//const handleCardFormSubmit = (evt) => { 
+// Инициализация класса с инфо о пользователе
+const userInfo = new UserInfo({ 
+  userNameSelector: '.profile__name', 
+  userAboutSelector: '.profile__activity'
+});
 
-  //evt.preventDefault();
-  
-  //const placeOfUser = inputPlace.value;
-  //const linkOfUser = inputLink.value;
-  //renderCard({
-    //name: placeOfUser, 
-    //link: linkOfUser
-  //});
-  // очистим инпут после ввода
-  //formNewElement.reset()
-  //windowPopupAdd.close();
-//}
+
 
 // Открытие формы редактирования профиля
 const openPopupEdit = () => {
   windowEdit.open();
   validatorEditProfile.enableValidation()
+  console.log('EDIT-OPEN');
+  //windowEdit.setEventListeners();
   //копирование текста в форму из профиля при открытии
-  inputName.value = profileName.textContent;
-  inputActivity.value = profileActivity.textContent;
+  inputName.value = userInfo.getUserInfo().inputName;
+  inputActivity.value = userInfo.getUserInfo().inputActivity;
 }
 
-// Открытие формы добавления новой карточки
-const openPopupAdd = () => {
-  windowPopupAdd.open();
-  validatorAddCard.enableValidation();
-}
-
-// Обработчик «отправки» формы редактирования профиля
-function handleProfileFormSubmit (evt) {
-    evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
-    profileName.textContent = inputName.value;
-    profileActivity.textContent = inputActivity.value;
-    windowEdit.close();
-}
+// Регистрируем обработчики событий большой картинки
+//windowBigImage.setEventListeners();
 
 // Регистрируем обработчики событий редактирование профиля
 profileButtonEdit.addEventListener('click', openPopupEdit);
-popupEditForm.addEventListener('submit', handleProfileFormSubmit);
+windowEdit.setEventListeners();
 
 // Регистрируем обработчики событий добавление карточки
 profileAddButton.addEventListener('click', openPopupAdd);
-//formNewElement.addEventListener('submit', handleCardFormSubmit);
+windowPopupAdd.setEventListeners();
 
 //Для каждой проверяемой формы создаём экземпляр класса FormValidator
 // Валидация

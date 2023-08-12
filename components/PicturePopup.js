@@ -8,8 +8,9 @@ export class PopupWithImage extends Popup {
     // открытие попапа
     open(name, link) {
         //перезаписывает родительский метод open
-        this._selector.classList.add('popup_opened');
-        this.setEventListeners();
+        super.open();
+
+        super.setEventListeners();
 
         this._selector.querySelector('.popup__big-photo').src = link;
         this._selector.querySelector('.popup__title-big-image').textContent = name;
