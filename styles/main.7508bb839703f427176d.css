@@ -23,7 +23,7 @@
 .element__title{font-family:Inter,Arial,Helvetica,sans-serif;font-size:24px;font-style:normal;font-weight:900;line-height:1.2;margin:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .element__button{background-color:#fff;border-style:none;margin:0;padding:0}
 .element__like{margin-right:5px;margin-top:5px}.element__like:hover{cursor:pointer;opacity:.5}
-.element__like_active{background-image:url(images/35948469632d0421d697.svg);background-position:50%;background-repeat:no-repeat;background-size:contain}
+.element__like_active{background-image:url(images/35948469632d0421d697.svg);background-position:50%;background-repeat:no-repeat;background-size:22px,19px;box-sizing:border-box;padding-left:5px}
 .element__delete{background-color:transparent;background-size:contain;border:none;height:19px;padding:0;position:absolute;right:20px;top:20px;width:18px}.element__delete:hover{cursor:pointer}
 .element__delete-image{height:19px;width:18px}.element__delete-image:hover{opacity:.6}
 .footer{font-family:Inter,Arial,Helvetica,sans-serif;margin:0 200px 60px}@media screen and (max-width:1024px){.footer{margin:0 19px 36px}}
