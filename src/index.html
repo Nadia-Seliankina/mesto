@@ -10,34 +10,26 @@
       content="HTML5, CSS, JavaScript, фотографии, интересные места, красивые места, 
       впечатления, эмоции, вдохновение">
     <title>Mesto</title>
-    <link rel="stylesheet" href="./pages/index.css">
-    <script defer src="./pages/index.js" type="module"></script>
-    <!--<script defer src="./components/Card.js" type="module"></script>-->
-    <!--<script defer src="./components/FormValidator.js" type="module"></script>-->
-    <!--<script defer src="./utils/constants.js" type="module"></script>-->
-    <!--<script defer src="./components/Popup.js" type="module"></script>-->
-    <!--<script defer src="./components/Section.js" type="module"></script>-->
-    <!--<script defer src="./components/PicturePopup.js" type="module"></script>-->
     <!--<link rel="icon" tipe="image" href="#">-->
   </head>
   <body class="page">
     <header class="header">
-      <img class="header__logo" src="./images/Mesto.svg" alt="Логотип">
+      <img class="header__logo" src="<%=require('./images/Mesto.svg')%>" alt="Логотип">
     </header>
     <main class="content">
       <section class="profile">
-        <img class="profile__avatar" src="./images/avatar.jpg" alt="фото профиля">
+        <img class="profile__avatar" src="<%=require('./images/avatar.jpg')%>" alt="фото профиля">
         <div class="profile__info">
           <div class="profile__text">
             <h1 class="profile__name">Жак-Ив Кусто</h1>
             <button class="profile__edit-button" name="edit-button" type="button" aria-label="Редактировать">
-              <img class="profile__edit-button-image" src="./images/Edit.svg" alt="Редактировать">
+              <img class="profile__edit-button-image" src="<%=require('./images/Edit.svg')%>" alt="Редактировать">
             </button>
           </div>
           <p class="profile__activity">Исследователь океана</p>
         </div>
         <button class="profile__add-button" name="add-button" type="button" aria-label="Добавить">
-          <img class="profile__add-button-image" src="./images/Plus.svg" alt="Добавить">
+          <img class="profile__add-button-image" src="<%=require('./images/Plus.svg')%>" alt="Добавить">
         </button>
       </section>
       <section class="elements">
@@ -70,7 +62,7 @@
         </form>
         <button name="popup-edit-button-close" type="button" class="popup__button-close" 
           aria-label="Закрыть" id="popup-edit-button-close">
-            <img class="popup__button-image" src="./images/Close-Icon.svg" alt="Закрыть">
+            <img class="popup__button-image" src="<%=require('./images/Close-Icon.svg')%>" alt="Закрыть">
         </button>
       </div>
     </section>
@@ -95,7 +87,7 @@
         </form>
         <button name="popup-add-button-close" type="button" class="popup__button-close" 
           aria-label="Закрыть" id="popup-add-button-close">
-            <img class="popup__button-image" src="./images/Close-Icon.svg" alt="Закрыть">
+            <img class="popup__button-image" src="<%=require('./images/Close-Icon.svg')%>" alt="Закрыть">
         </button>
       </div>
     </section>
@@ -105,7 +97,7 @@
         <img class="popup__big-photo" src="#" alt="#">
         <h2 class="popup__title-big-image">Фото места</h2>
         <button name="popup-image-button-close" type="button" class="popup__button-close" aria-label="Закрыть" id="popup-image-button-close">
-          <img class="popup__button-image" src="./images/Close-Icon.svg" alt="Закрыть">
+          <img class="popup__button-image" src="<%=require('./images/Close-Icon.svg')%>" alt="Закрыть">
         </button>
       </div>
     </section>
@@ -119,11 +111,11 @@
         <div class="element__group">
           <h2 class="element__title"></h2>
           <button name="button-like" type="button" class="element__button" aria-label="Нравится">
-            <img class="element__like" src="./images/Vector.svg" alt="Нравится">
+            <img class="element__like" src="<%=require('./images/Vector.svg')%>" alt="Нравится">
           </button>
         </div>
         <button name="button-delete" type="button" class="element__delete" aria-label="Удалить">
-          <img class="element__delete-image" src="./images/Delete.svg" alt="Удалить">
+          <img class="element__delete-image" src="<%=require('./images/Delete.svg')%>" alt="Удалить">
         </button>
       </li>
     </template>
