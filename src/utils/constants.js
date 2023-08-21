@@ -33,6 +33,9 @@ export const popupEditForm = document.forms['form-edit-profile'];
 export const closeButtons = document.querySelectorAll('.popup__button-close'); // все крестики - закрывает все попапы
 export const profileButtonEdit = document.querySelector('.profile__edit-button');
 
+export const battonSave = document.querySelector('[name="button-save"]');
+export const battonCreate = document.querySelector('[name="button-create"]');
+
 export const profileName = document.querySelector('.profile__name');
 export const profileActivity = document.querySelector('.profile__activity');
 

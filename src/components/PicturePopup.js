@@ -3,6 +3,8 @@ import { Popup } from './Popup.js'
 export class PopupWithImage extends Popup {
     constructor({ popupSelector }) {
         super({ popupSelector });
+        this._bigPhoto = this._selector.querySelector('.popup__big-photo');
+        this._titlePhoto = this._selector.querySelector('.popup__title-big-image');
     }
 
     // открытие попапа
@@ -10,10 +12,8 @@ export class PopupWithImage extends Popup {
         //перезаписывает родительский метод open
         super.open();
 
-        super.setEventListeners();
-
-        this._selector.querySelector('.popup__big-photo').src = link;
-        this._selector.querySelector('.popup__title-big-image').textContent = name;
-        this._selector.querySelector('.popup__big-photo').alt = name;
+        this._bigPhoto.src = link;
+        this._titlePhoto.textContent = name;
+        this._bigPhoto.alt = name;
     }
 }

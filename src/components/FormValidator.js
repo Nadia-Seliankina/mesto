@@ -32,9 +32,10 @@ export class FormValidator {
         errorElement.textContent = inputElement.validationMessage;
     }
 
-    _disabledButton (buttonElement) {
+    disabledButton (buttonElement) {
         buttonElement.disabled = true;
         buttonElement.classList.add(this._inactiveButtonClass);
+        console.log('disabledButton');
     }
     
     _enabledButton (buttonElement) {
@@ -45,7 +46,7 @@ export class FormValidator {
     //приватные методы изменяют состояние кнопки сабмита
     _toggleButtonState (buttonElement, isActive) {
         if (!isActive) {
-            this._disabledButton(buttonElement);
+            this.disabledButton(buttonElement);
         } else {
             this._enabledButton(buttonElement);
         }
@@ -75,7 +76,7 @@ export class FormValidator {
     // Внутри формы ищем инпуты
     this._inputsList = Array.from(this._formElement.querySelectorAll(this._inputSelector));
     // Найдём кнопки
-    this._submitButtonElement = this._formElement.querySelector(this._buttonSelector);
+    this._submitButtonElement = this._formElement.querySelector(this._buttonSelector); 
 
     this._toggleButtonState(this._submitButtonElement, this._formElement.checkValidity());
 
@@ -83,7 +84,6 @@ export class FormValidator {
         evt.preventDefault();
         console.log('Форма отправлена');
         this._toggleButtonState(this._submitButtonElement, this._formElement.checkValidity());
-
     })
 
     // Перебираем список инпутов конкретной формы и вешаем на каждый инпут обработчик события input
@@ -98,21 +98,16 @@ export class FormValidator {
     //публичный метод, который включает валидацию
     enableValidation () {
         this._setEventListener();
+        console.log('setVALIDATION');
+    }
+
+    resetValidation() {
+        //управляем кнопкой
+        this._toggleButtonState(this._submitButtonElement, this._formElement.checkValidity());
+  
+        this._inputsList.forEach((inputElement) => {
+            this._hideError(inputElement, this._errorElement); //очищаем ошибки
+        });
+        console.log('resetVALIDATION');
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

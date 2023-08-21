@@ -15,7 +15,8 @@ import { initialCards,
   profileAddButton,
   elementsContainer,
   formNewElement,
-  popupEdit
+  battonSave,
+  battonCreate
 } from '../utils/constants.js'
 
 const windowBigImage = new PopupWithImage({ popupSelector: '#popup-big-image' });
@@ -26,14 +27,7 @@ const windowPopupAdd = new PopupWithForm({
   // объект, который мы передадим при вызове handleFormSubmit
   // окажется на месте параметра formData
   handleFormSubmit: (formData) => {
-    // при создании экземпляра Card передаём
-    // ему объект с данными формы
-    const cardNew = new Card(formData, '#create-element-template', openPopupBigImage);
-    // Создаём карточку и возвращаем наружу. Вызываем метод
-    const cardElementNew = cardNew.generateCard();
-    // Добавляем новую карточку в DOM
-    cardList.addItem(cardElementNew);
-
+    renderCard(formData);
     windowPopupAdd.close();
   }
 });
@@ -79,8 +73,9 @@ cardList.renderItems();
 // Открытие формы добавления новой карточки
 const openPopupAdd = () => {
   windowPopupAdd.open();
+  validatorAddCard.resetValidation();
+  validatorAddCard.disabledButton(battonCreate);
   console.log('ADD-OPEN');
-  validatorAddCard.enableValidation();
 }
 
 // Инициализация класса с инфо о пользователе
@@ -89,21 +84,18 @@ const userInfo = new UserInfo({
   userAboutSelector: '.profile__activity'
 });
 
-
-
 // Открытие формы редактирования профиля
 const openPopupEdit = () => {
   windowEdit.open();
-  validatorEditProfile.enableValidation()
+  validatorEditProfile.disabledButton(battonSave);
+  validatorEditProfile.resetValidation();
   console.log('EDIT-OPEN');
-  //windowEdit.setEventListeners();
   //копирование текста в форму из профиля при открытии
-  inputName.value = userInfo.getUserInfo().inputName;
-  inputActivity.value = userInfo.getUserInfo().inputActivity;
+  windowEdit.setInputValues(userInfo.getUserInfo());
 }
 
 // Регистрируем обработчики событий большой картинки
-//windowBigImage.setEventListeners();
+windowBigImage.setEventListeners();
 
 // Регистрируем обработчики событий редактирование профиля
 profileButtonEdit.addEventListener('click', openPopupEdit);
@@ -116,4 +108,6 @@ windowPopupAdd.setEventListeners();
 //Для каждой проверяемой формы создаём экземпляр класса FormValidator
 // Валидация
 const validatorAddCard = new FormValidator(configFormSelector, formNewElement);
+validatorAddCard.enableValidation();
 const validatorEditProfile = new FormValidator(configFormSelector, popupEditForm);
+validatorEditProfile.enableValidation();

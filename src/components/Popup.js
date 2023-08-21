@@ -1,10 +1,12 @@
-import { closeButtons } from '../utils/constants.js'
-
 //открытие и закрытие попапа
 export class Popup {
     //constructor(popupSelector)
     constructor({ popupSelector }) {
         this._selector = document.querySelector(popupSelector);
+
+        this._handleOverlayCloseBound = this._handleOverlayClose.bind(this);
+        this.closeBound = this.close.bind(this);
+        this._handleEscCloseBound = this._handleEscClose.bind(this);
     }
 
     // закрытие попапа клавишей Esc
@@ -26,14 +28,11 @@ export class Popup {
     // добавляет слушатели
     setEventListeners() {
         // bind указывает значение this с которым эта функция будет вызываться для колл-бек функций
-        this._handleOverlayCloseBound = this._handleOverlayClose.bind(this);
-        this.closeBound = this.close.bind(this);
+        //this._handleOverlayCloseBound = this._handleOverlayClose.bind(this);
+        //this.closeBound = this.close.bind(this);
 
-        //Универсальный обработчик крестиков закрытия попапов
-        closeButtons.forEach((button) => {
-        // устанавливаем обработчик закрытия на крестик
-        button.addEventListener('click', this.closeBound);
-        });
+        this._closeButton = this._selector.querySelector('.popup__button-close');
+        this._closeButton.addEventListener('click', this.closeBound);
 
         this._selector.addEventListener('click', this._handleOverlayCloseBound);
         console.log('SETlistenerCLICK')
@@ -41,8 +40,7 @@ export class Popup {
 
     // удаляет слушатели
     _removeEventListeners() {
-        this._handleEscCloseBound = this._handleEscClose.bind(this);
-
+        //this._handleEscCloseBound = this._handleEscClose.bind(this);
         document.removeEventListener('keydown', this._handleEscCloseBound);
         console.log('REMOVElistener')
     }

@@ -1,7 +1,3 @@
-//import { PopupWithImage } from './PicturePopup.js'
-//import { initialCards, 
-    //popupBigImage } from '../utils/constants.js'
-
 export class Card {
     // в конструкторе будут динамические данные, для каждого экземпляра свои
     constructor(dataCard, templateSelector, handleCardClick) { // Работа класса с разными шаблонами
@@ -25,25 +21,18 @@ export class Card {
         this._likeBtn.classList.toggle('element__like_active');
     }
 
-    _setEventListenersLike() {
-        this._likeBtn.addEventListener('click', () => {
-            this._handleLikeCard();
-        });
-    }
-
     // Удаление карточки
     _handleDeleteCard() {
         this._deleteBtn.closest('.element').remove(); // для ближайшего элемента по селектору
     }
 
-    _setEventListenersDeleteCard() {
-        this._deleteBtn.addEventListener('click', () => {
-        this._handleDeleteCard();
+    _setEventListeners() {
+        this._likeBtn.addEventListener('click', () => {
+            this._handleLikeCard();
         });
-    }
-
-    // Попап
-    _setEventListenersPopup() {
+        this._deleteBtn.addEventListener('click', () => {
+            this._handleDeleteCard();
+        });
         this._openBigImageBtn.addEventListener('click', () => {
             // добавим необходимые значения и откроем попап
             this._handleCardClick(this._name, this._link);
@@ -63,18 +52,16 @@ export class Card {
   
         //добавим удаление карточки
         this._deleteBtn = this._view.querySelector('.element__delete'); // Кнопка удаления
-        this._setEventListenersDeleteCard();
   
         //добавим обработчик лайка карточки
         this._likeBtn = this._view.querySelector('.element__button'); // Кнопка нравится
-        this._setEventListenersLike();
       
         //добавим открытие большой фотографии
         this._openBigImageBtn = this._view.querySelector('.element__image-button'); // Кнопка открытия попапа
-        this._setEventListenersPopup();
+
+        this._setEventListeners();
 
         // Вернём элемент наружу
         return this._view;
     };
-
 }
