@@ -29,7 +29,8 @@ export class FormValidator {
     
     _hideError (inputElement, errorElement) {
         inputElement.classList.remove(this._inputErrorClass);
-        errorElement.textContent = inputElement.validationMessage;
+        errorElement.textContent = "";
+        //errorElement.textContent = inputElement.validationMessage;
     }
 
     disabledButton (buttonElement) {
@@ -62,7 +63,7 @@ export class FormValidator {
         this._errorElement = this._formElement.querySelector(`#${inputElement.name}-error`);
         //if (!this._errorElement) return;
 
-        // Усли инпут не валиден выводи сообщение об ошибке в элемент ошибки и добавляем класс невалидности
+        // Если инпут не валиден выводи сообщение об ошибке в элемент ошибки и добавляем класс невалидности
         if (!this._isInputValid){
             this._showError (inputElement, this._errorElement);
             } else {
@@ -106,7 +107,9 @@ export class FormValidator {
         this._toggleButtonState(this._submitButtonElement, this._formElement.checkValidity());
   
         this._inputsList.forEach((inputElement) => {
-            this._hideError(inputElement, this._errorElement); //очищаем ошибки
+            //Так как errorElement ещё не определён внутри этой функции, ещё не доступен так как на каждый ввод определяется
+            const errorElement = this._formElement.querySelector(`#${inputElement.name}-error`);
+            this._hideError(inputElement, errorElement); //очищаем ошибки
         });
         console.log('resetVALIDATION');
     }
