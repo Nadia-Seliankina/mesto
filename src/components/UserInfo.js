@@ -4,6 +4,8 @@ export class UserInfo {
     constructor({ userNameSelector, userAboutSelector }) {
         this._profileName = document.querySelector(userNameSelector);
         this._profileActivity = document.querySelector(userAboutSelector);
+
+        this._profileAvatar = document.querySelector('.profile__avatar');
     }
 
     //возвращает объект с данными пользователя. 
@@ -11,8 +13,8 @@ export class UserInfo {
     getUserInfo() {
         //ключи объекта - атрибуты name каждого поля
         const userData = {
-            inputName: this._profileName.textContent,
-            inputActivity: this._profileActivity.textContent
+            name: this._profileName.textContent,
+            about: this._profileActivity.textContent
         }
 
         return userData;
@@ -20,7 +22,14 @@ export class UserInfo {
 
     //принимает новые данные пользователя и добавляет их на страницу
     setUserInfo(userData) {
-        this._profileName.textContent = userData.inputName;
-        this._profileActivity.textContent = userData.inputActivity;
+        this._profileName.textContent = userData.name;
+        this._profileActivity.textContent = userData.about;
+    }
+
+    //принимает данные пользователя c сервера и добавляет их на страницу
+    getserverInfo(userData) {
+        this._profileName.textContent = userData.name;
+        this._profileActivity.textContent = userData.about;
+        this._profileAvatar.src = userData.avatar
     }
 }

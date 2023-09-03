@@ -1,0 +1,29 @@
+.profile__avatar-button {
+    padding: 0;
+    border: none;
+    width: 100%;
+    cursor: pointer;
+    background: inherit;
+    position: relative;
+}
+
+.profile__avatar-button::after {
+    cursor: pointer;
+    opacity: 0.6;
+
+    background: rgba(0, 0, 0, 0.8);
+    background-image: url('../../../../src/images/penna.png');
+    opacity: 0;
+    background-repeat: no-repeat;
+    background-position: center;
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.profile__avatar-button:hover:after {
+    opacity: 1;
+}

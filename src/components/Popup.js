@@ -1,6 +1,5 @@
 //открытие и закрытие попапа
 export class Popup {
-    //constructor(popupSelector)
     constructor({ popupSelector }) {
         this._selector = document.querySelector(popupSelector);
 
@@ -27,10 +26,6 @@ export class Popup {
 
     // добавляет слушатели
     setEventListeners() {
-        // bind указывает значение this с которым эта функция будет вызываться для колл-бек функций
-        //this._handleOverlayCloseBound = this._handleOverlayClose.bind(this);
-        //this.closeBound = this.close.bind(this);
-
         this._closeButton = this._selector.querySelector('.popup__button-close');
         this._closeButton.addEventListener('click', this.closeBound);
 
@@ -40,7 +35,6 @@ export class Popup {
 
     // удаляет слушатели
     _removeEventListeners() {
-        //this._handleEscCloseBound = this._handleEscClose.bind(this);
         document.removeEventListener('keydown', this._handleEscCloseBound);
         console.log('REMOVElistener')
     }

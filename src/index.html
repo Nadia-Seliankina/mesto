@@ -1,123 +1,168 @@
 <!DOCTYPE html>
 <html lang="ru">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="сервис Mesto">
-    <meta name="author" content="Надежда Селянкина">
-    <meta
-      name="keywords"
-      content="HTML5, CSS, JavaScript, фотографии, интересные места, красивые места, 
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="сервис Mesto">
+  <meta name="author" content="Надежда Селянкина">
+  <meta name="keywords" content="HTML5, CSS, JavaScript, фотографии, интересные места, красивые места, 
       впечатления, эмоции, вдохновение">
-    <title>Mesto</title>
-    <!--<link rel="icon" tipe="image" href="#">-->
-  </head>
-  <body class="page">
-    <header class="header">
-      <img class="header__logo" src="<%=require('./images/Mesto.svg')%>" alt="Логотип">
-    </header>
-    <main class="content">
-      <section class="profile">
+  <title>Mesto</title>
+  <!--<link rel="icon" tipe="image" href="#">-->
+</head>
+
+<body class="page">
+  <header class="header">
+    <img class="header__logo" src="<%=require('./images/Mesto.svg')%>" alt="Логотип">
+  </header>
+  <main class="content">
+    <section class="profile">
+      <button class="profile__avatar-button" name="avatar-button" type="button" aria-label="Редактировать">
         <img class="profile__avatar" src="<%=require('./images/avatar.jpg')%>" alt="фото профиля">
-        <div class="profile__info">
-          <div class="profile__text">
-            <h1 class="profile__name">Жак-Ив Кусто</h1>
-            <button class="profile__edit-button" name="edit-button" type="button" aria-label="Редактировать">
-              <img class="profile__edit-button-image" src="<%=require('./images/Edit.svg')%>" alt="Редактировать">
-            </button>
-          </div>
-          <p class="profile__activity">Исследователь океана</p>
+      </button>
+      <div class="profile__info">
+        <div class="profile__text">
+          <h1 class="profile__name">Жак-Ив Кусто</h1>
+          <button class="profile__edit-button" name="edit-button" type="button" aria-label="Редактировать">
+            <img class="profile__edit-button-image" src="<%=require('./images/Edit.svg')%>" alt="Редактировать">
+          </button>
         </div>
-        <button class="profile__add-button" name="add-button" type="button" aria-label="Добавить">
-          <img class="profile__add-button-image" src="<%=require('./images/Plus.svg')%>" alt="Добавить">
-        </button>
-      </section>
-      <section class="elements">
-        <ul class="elements__list">
-          <!-- Вставка из template-->
-        </ul>
-      </section>
-    </main>
-    <footer class="footer">
-      <p class="footer__text">© 2023 Надежда Селянкина</p>
-    </footer>
-    <!-- Pop-up profile-->
-    <section class="popup" id="popup-edit">
-      <div class="popup__container">
-        <h2 class="popup__heading">Редактировать профиль</h2>
-        <form class="popup__form" name="form-edit-profile" novalidate>
-          <fieldset class="popup__fieldset">
-            <!-- Получения данных о имени -->
-            <input type="text" name="inputName" placeholder="Имя" class="popup__input" 
-              id="inputName" required minlength="2" maxlength="40">
-            <span id="inputName-error" class="popup__error popup__error_num_1"></span>
-            <!-- Получения данных о деятельности -->
-            <input type="text" name="inputActivity" placeholder="Вид деятельности" 
-              class="popup__input" id="inputActivity" required minlength="2" maxlength="200">
-            <span id="inputActivity-error" class="popup__error popup__error_num_2"></span>
-          </fieldset>
-          <button name="button-save" type="submit" class="popup__button-save" aria-label="Сохранить">
+        <p class="profile__activity">Исследователь океана</p>
+      </div>
+      <button class="profile__add-button" name="add-button" type="button" aria-label="Добавить">
+        <img class="profile__add-button-image" src="<%=require('./images/Plus.svg')%>" alt="Добавить">
+      </button>
+    </section>
+    <section class="elements">
+      <ul class="elements__list">
+        <!-- Вставка из template-->
+      </ul>
+    </section>
+  </main>
+  <footer class="footer">
+    <p class="footer__text">© 2023 Надежда Селянкина</p>
+  </footer>
+  <!-- Pop-up profile-->
+  <section class="popup" id="popup-edit">
+    <div class="popup__container">
+      <h2 class="popup__heading">Редактировать профиль</h2>
+      <form class="popup__form" name="form-edit-profile" novalidate>
+        <fieldset class="popup__fieldset">
+          <!-- Получения данных о имени -->
+          <input type="text" name="name" placeholder="Имя" class="popup__input" id="inputName" required minlength="2"
+            maxlength="40">
+          <span id="name-error" class="popup__error popup__error_num_1"></span>
+          <!-- Получения данных о деятельности -->
+          <input type="text" name="about" placeholder="Вид деятельности" class="popup__input" id="inputActivity"
+            required minlength="2" maxlength="200">
+          <span id="about-error" class="popup__error popup__error_num_2"></span>
+        </fieldset>
+        <button name="button-save" type="submit" class="popup__button-save" aria-label="Сохранить">
           Сохранить
-          </button>
-        </form>
-        <button name="popup-edit-button-close" type="button" class="popup__button-close" 
-          aria-label="Закрыть" id="popup-edit-button-close">
-            <img class="popup__button-image" src="<%=require('./images/Close-Icon.svg')%>" alt="Закрыть">
         </button>
-      </div>
-    </section>
-    <!-- Pop-up add card-->
-    <section class="popup" id="popup-add">
-      <div class="popup__container">
-        <h2 class="popup__heading">Новое место</h2>
-        <form class="popup__form" name="form-add-item" id="form-add-item" novalidate>
-          <fieldset class="popup__fieldset">
-            <!-- Получения данных о названии места -->
-            <input type="text" name="name" placeholder="Название" class="popup__input" 
-              id="name" required minlength="2" maxlength="30">
-            <span id="name-error" class="popup__error popup__error_num_1"></span>
-            <!-- Получения данных о ссылке на фото -->
-            <input type="url" name="link" placeholder="Ссылка на картинку" class="popup__input" 
-              id="link" required>
-            <span id="link-error" class="popup__error popup__error_num_2"></span>
-          </fieldset>
-          <button name="button-create" type="submit" class="popup__button-save" aria-label="Создать">
+      </form>
+      <button name="popup-edit-button-close" type="button" class="popup__button-close" aria-label="Закрыть"
+        id="popup-edit-button-close">
+        <img class="popup__button-image" src="<%=require('./images/Close-Icon.svg')%>" alt="Закрыть">
+      </button>
+    </div>
+  </section>
+  <!-- Pop-up avatar-->
+  <section class="popup" id="popup-edit">
+    <div class="popup__container">
+      <h2 class="popup__heading">Редактировать профиль</h2>
+      <form class="popup__form" name="form-edit-profile" novalidate>
+        <fieldset class="popup__fieldset">
+          <!-- Получения данных о имени -->
+          <input type="text" name="name" placeholder="Имя" class="popup__input" id="inputName" required minlength="2"
+            maxlength="40">
+          <span id="name-error" class="popup__error popup__error_num_1"></span>
+          <!-- Получения данных о деятельности -->
+          <input type="text" name="about" placeholder="Вид деятельности" class="popup__input" id="inputActivity"
+            required minlength="2" maxlength="200">
+          <span id="about-error" class="popup__error popup__error_num_2"></span>
+        </fieldset>
+        <button name="button-save" type="submit" class="popup__button-save" aria-label="Сохранить">
+          Сохранить
+        </button>
+      </form>
+      <button name="popup-edit-button-close" type="button" class="popup__button-close" aria-label="Закрыть"
+        id="popup-edit-button-close">
+        <img class="popup__button-image" src="<%=require('./images/Close-Icon.svg')%>" alt="Закрыть">
+      </button>
+    </div>
+  </section>
+  <!-- Pop-up add card-->
+  <section class="popup" id="popup-add">
+    <div class="popup__container">
+      <h2 class="popup__heading">Новое место</h2>
+      <form class="popup__form" name="form-add-item" id="form-add-item" novalidate>
+        <fieldset class="popup__fieldset">
+          <!-- Получения данных о названии места -->
+          <input type="text" name="name" placeholder="Название" class="popup__input" id="name" required minlength="2"
+            maxlength="30">
+          <span id="name-error" class="popup__error popup__error_num_1"></span>
+          <!-- Получения данных о ссылке на фото -->
+          <input type="url" name="link" placeholder="Ссылка на картинку" class="popup__input" id="link" required>
+          <span id="link-error" class="popup__error popup__error_num_2"></span>
+        </fieldset>
+        <button name="button-create" type="submit" class="popup__button-save" aria-label="Создать">
           Создать
-          </button>
-        </form>
-        <button name="popup-add-button-close" type="button" class="popup__button-close" 
-          aria-label="Закрыть" id="popup-add-button-close">
-            <img class="popup__button-image" src="<%=require('./images/Close-Icon.svg')%>" alt="Закрыть">
         </button>
-      </div>
-    </section>
-    <!-- Pop-up big image-->
-    <section class="popup" id="popup-big-image">
-      <div class="popup__container-big-image">
-        <img class="popup__big-photo" src="#" alt="#">
-        <h2 class="popup__title-big-image">Фото места</h2>
-        <button name="popup-image-button-close" type="button" class="popup__button-close" aria-label="Закрыть" id="popup-image-button-close">
-          <img class="popup__button-image" src="<%=require('./images/Close-Icon.svg')%>" alt="Закрыть">
-        </button>
-      </div>
-    </section>
-    <!-- template new element-->
-    <template id="create-element-template">
-      <li class="element">
-        <button class="element__image-button" name="image-button" type="button" aria-label="Открыть фото">
-          <img class="element__image" src="#"
-          alt="#">
-        </button>
-        <div class="element__group">
-          <h2 class="element__title"></h2>
+      </form>
+      <button name="popup-add-button-close" type="button" class="popup__button-close" aria-label="Закрыть"
+        id="popup-add-button-close">
+        <img class="popup__button-image" src="<%=require('./images/Close-Icon.svg')%>" alt="Закрыть">
+      </button>
+    </div>
+  </section>
+  <!-- Pop-up big image-->
+  <section class="popup" id="popup-big-image">
+    <div class="popup__container-big-image">
+      <img class="popup__big-photo" src="#" alt="#">
+      <h2 class="popup__title-big-image">Фото места</h2>
+      <button name="popup-image-button-close" type="button" class="popup__button-close" aria-label="Закрыть"
+        id="popup-image-button-close">
+        <img class="popup__button-image" src="<%=require('./images/Close-Icon.svg')%>" alt="Закрыть">
+      </button>
+    </div>
+  </section>
+  <!-- template new element-->
+  <template id="create-element-template">
+    <li class="element">
+      <button class="element__image-button" name="image-button" type="button" aria-label="Открыть фото">
+        <img class="element__image" src="#" alt="#">
+      </button>
+      <div class="element__group">
+        <h2 class="element__title"></h2>
+        <div class="element__how-like">
           <button name="button-like" type="button" class="element__button" aria-label="Нравится">
             <img class="element__like" src="<%=require('./images/Vector.svg')%>" alt="Нравится">
           </button>
+          <h3 class="element__counter">0</h2>
         </div>
-        <button name="button-delete" type="button" class="element__delete" aria-label="Удалить">
-          <img class="element__delete-image" src="<%=require('./images/Delete.svg')%>" alt="Удалить">
+      </div>
+      <button name="button-delete" type="button" class="element__delete" aria-label="Удалить">
+        <img class="element__delete-image" src="<%=require('./images/Delete.svg')%>" alt="Удалить">
+      </button>
+    </li>
+  </template>
+  <!-- Pop-up delete card-->
+  <section class="popup" id="popup-delete">
+    <div class="popup__container">
+      <h2 class="popup__heading-confirm">Вы уверены?</h2>
+      <form class="popup__form" name="form-delete-item" id="form-delete-item" novalidate></form>
+        <button name="button-da" type="submit" class="popup__button-confirm" aria-label="Да">
+          Да
         </button>
-      </li>
-    </template>
-  </body>
+      </form>
+      <button name="popup-delete-button-close" type="button" class="popup__button-close" aria-label="Закрыть"
+        id="popup-delete-button-close">
+        <img class="popup__button-image" src="<%=require('./images/Close-Icon.svg')%>" alt="Закрыть">
+      </button>
+    </div>
+  </section>
+</body>
+
 </html>

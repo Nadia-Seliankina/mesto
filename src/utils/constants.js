@@ -35,15 +35,13 @@ export const profileButtonEdit = document.querySelector('.profile__edit-button')
 
 export const battonSave = document.querySelector('[name="button-save"]');
 export const battonCreate = document.querySelector('[name="button-create"]');
+//export const buttonDelete = document.querySelector('[name="button-da"]');
 
 export const profileName = document.querySelector('.profile__name');
 export const profileActivity = document.querySelector('.profile__activity');
 
-export const inputName = document.querySelector('#inputName');
-export const inputActivity = document.querySelector('#inputActivity');
-
 // Делаем выборку DOM элементов для формы добавления новой карточки
-export const popupAdd= document.querySelector('#popup-add'); //попап добавления карточки
+export const popupAdd = document.querySelector('#popup-add'); //попап добавления карточки
 export const profileAddButton = document.querySelector('.profile__add-button');
 
 //export const elementsContainer = document.querySelector('.elements__list'); // Ul куда вставляем элементы
@@ -54,3 +52,12 @@ export const inputLink = formNewElement.querySelector('[name="input-link"]'); //
 
 // Делаем выборку DOM элементов для открытия и закрытия большой картинки
 export const popupBigImage = document.querySelector('#popup-big-image'); // Весь попап
+
+export const configApi = {
+  url: 'https://mesto.nomoreparties.co',
+  headers: {
+    "content-type": "application/json",
+    authorization: '0523e71c-6164-4ff4-82c6-ca81e8bb5b70'
+    //"authorization": "0523e71c-6164-4ff4-82c6-ca81e8bb5b70"
+  }
+}
