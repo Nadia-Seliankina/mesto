@@ -1,11 +1,10 @@
 //управление отображением информации о пользователе на странице
 export class UserInfo {
     //Принимает в конструктор объект с селекторами двух элементов: элемента имени пользователя и элемента информации о себе
-    constructor({ userNameSelector, userAboutSelector }) {
+    constructor({ userNameSelector, userAboutSelector, userAvatarSelector }) {
         this._profileName = document.querySelector(userNameSelector);
         this._profileActivity = document.querySelector(userAboutSelector);
-
-        this._profileAvatar = document.querySelector('.profile__avatar');
+        this._profileAvatar = document.querySelector(userAvatarSelector);
     }
 
     //возвращает объект с данными пользователя. 
@@ -24,12 +23,13 @@ export class UserInfo {
     setUserInfo(userData) {
         this._profileName.textContent = userData.name;
         this._profileActivity.textContent = userData.about;
+        this._profileAvatar.src = userData.avatar;
     }
 
     //принимает данные пользователя c сервера и добавляет их на страницу
     getserverInfo(userData) {
         this._profileName.textContent = userData.name;
         this._profileActivity.textContent = userData.about;
-        this._profileAvatar.src = userData.avatar
+        this._profileAvatar.src = userData.avatar;
     }
 }

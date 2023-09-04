@@ -30,11 +30,15 @@ export const initialCards = [
 // Делаем выборку DOM элементов для редактирования профиля / Найдём селектор на странице
 export const popupEdit = document.querySelector('#popup-edit'); // попап редактирования профиля
 export const popupEditForm = document.forms['form-edit-profile'];
+
+export const popupEditAvatar = document.forms['form-edit-avatar'];// попап редактирования аватара
+export const profileAvatarEdit = document.querySelector('.profile__avatar-button');
+
 export const closeButtons = document.querySelectorAll('.popup__button-close'); // все крестики - закрывает все попапы
 export const profileButtonEdit = document.querySelector('.profile__edit-button');
 
 export const battonSave = document.querySelector('[name="button-save"]');
-export const battonCreate = document.querySelector('[name="button-create"]');
+//export const battonCreate = document.querySelector('[name="button-create"]');
 //export const buttonDelete = document.querySelector('[name="button-da"]');
 
 export const profileName = document.querySelector('.profile__name');

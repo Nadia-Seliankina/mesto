@@ -8,6 +8,8 @@ export class PopupWithForm extends Popup {
         this._formElement = this._selector.querySelector('.popup__form');
         // достаём все элементы полей
         this._inputList = Array.from(this._selector.querySelectorAll('.popup__input'));
+
+        this._battonSave = this._selector.querySelector('[name="button-save"]');
     }
 
     //Содержит приватный метод _getInputValues, который собирает данные всех полей формы.
@@ -27,10 +29,10 @@ export class PopupWithForm extends Popup {
 
     setInputValues(data) {
         this._inputList.forEach((input) => {
-          // тут вставляем в `value` инпута данные из объекта по атрибуту `name` этого инпута
-          input.value = data[input.name];
+            // тут вставляем в `value` инпута данные из объекта по атрибуту `name` этого инпута
+            input.value = data[input.name];
         });
-      }
+    }
 
     //Перезаписывает родительский метод setEventListeners. 
     setEventListeners() {
@@ -42,6 +44,7 @@ export class PopupWithForm extends Popup {
             // добавим вызов функции _handleFormSubmit
             // передадим ей объект — результат работы _getInputValues
             this._handleSubmit(this._getInputValues());
+            this._battonSave.textContent = "Сохранение...";
         });
     }
 

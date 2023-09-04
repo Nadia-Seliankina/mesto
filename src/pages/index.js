@@ -9,12 +9,13 @@ import { UserInfo } from '../components/UserInfo.js'
 import { FormValidator, configFormSelector } from '../components/FormValidator.js'
 import {
   popupEditForm,
+  popupEditAvatar,
   profileButtonEdit,
+  profileAvatarEdit,
   profileAddButton,
   elementsContainer,
   formNewElement,
   battonSave,
-  battonCreate,
   configApi
 } from '../utils/constants.js'
 import { Api } from '../components/Api.js'
@@ -41,8 +42,14 @@ const windowPopupAdd = new PopupWithForm({
   // окажется на месте параметра formData
   handleFormSubmit: (formData) => {
     api.addCard(formData)
-    renderCard(formData);
-    windowPopupAdd.close();
+    .then((formData) => {
+      renderCard(formData);
+      windowPopupAdd.close();
+    })
+    .catch((err) => console.log(err))
+    .finally(() => {
+      battonSave.textContent = "Создать";
+    })
   }
 });
 
@@ -60,11 +67,37 @@ const windowEdit = new PopupWithForm({
         // Обработчик «отправки» формы редактирования профиля
         userInfo.setUserInfo({
           name: formUser.name,
-          about: formUser.about
+          about: formUser.about,
+          avatar: formUser.avatar
         })
         windowEdit.close();
       })
       .catch((err) => console.log(err))
+      .finally(() => {
+        battonSave.textContent = "Сохранить";
+      })
+  }
+});
+
+const windowAvatar = new PopupWithForm({
+  popupSelector: '#popup-avatar',
+  // объект, который мы передадим при вызове handleFormSubmit
+  // окажется на месте параметра fromUser
+  handleFormSubmit: (formUser) => {
+    api.editAvatar(formUser)
+      .then((formUser) => {
+        // Обработчик «отправки» формы редактирования профиля
+        userInfo.getserverInfo({
+          name: formUser.name,
+          about: formUser.about,
+          avatar: formUser.avatar
+        })
+        windowAvatar.close();
+      })
+      .catch((err) => console.log(err))
+      .finally(() => {
+        battonSave.textContent = "Сохранить";
+      })
   }
 });
 
@@ -87,14 +120,15 @@ const cardList = new Section({
 const openPopupAdd = () => {
   windowPopupAdd.open();
   validatorAddCard.resetValidation();
-  validatorAddCard.disabledButton(battonCreate);
+  validatorAddCard.disabledButton(battonSave);
   console.log('ADD-OPEN');
 }
 
 // Инициализация класса с инфо о пользователе
 const userInfo = new UserInfo({
   userNameSelector: '.profile__name',
-  userAboutSelector: '.profile__activity'
+  userAboutSelector: '.profile__activity',
+  userAvatarSelector: '.profile__avatar'
 });
 
 // Открытие формы редактирования профиля
@@ -106,15 +140,19 @@ const openPopupEdit = () => {
 
   //копирование текста в форму из профиля при открытии
   windowEdit.setInputValues(userInfo.getUserInfo())
+}
 
-  //name.value = userInfo.getUserInfo().name; 
-  //about.value = userInfo.getUserInfo().about;
+// Открытие формы редактирования аватара
+const openPopupAvatar = () => {
+  windowAvatar.open();
+  validatorEditAvatar.disabledButton(battonSave);
+  validatorEditAvatar.resetValidation();
+  console.log('EDIT-аватар');
 }
 
 function handleLikePost(cardInstance) {
   api.changeLike(cardInstance.getId(), cardInstance.isLiked())
     .then((dataCardFromServer) => {
-      //console.log('старые лайки', cardInstance._dataCard);
       console.log('новые лайки', dataCardFromServer);
       cardInstance.setLikesData(dataCardFromServer);
     })
@@ -137,17 +175,12 @@ function handleFormDelete(cardInstance) {
     api.removeCard(cardInstance.getId())
       .then(() => {
         console.log('успешно удалена');
-        //cardInstance.remove();
-        //windowPopupConfirm.close();
+        cardInstance.remove();
+        windowPopupConfirm.close();
       })
       .catch((err) => console.log(err))
   })
 }
-
-//handleFormSubmit: () => {
-//
-//buttonDelete.closest('.element').remove(); // для ближайшего элемента по селектору
-//}
 
 // Регистрируем обработчики событий большой картинки
 windowBigImage.setEventListeners();
@@ -155,6 +188,9 @@ windowBigImage.setEventListeners();
 // Регистрируем обработчики событий редактирование профиля
 profileButtonEdit.addEventListener('click', openPopupEdit);
 windowEdit.setEventListeners();
+profileAvatarEdit.addEventListener('click', openPopupAvatar);
+windowAvatar.setEventListeners();
+
 
 // Регистрируем обработчики событий добавление карточки
 profileAddButton.addEventListener('click', openPopupAdd);
@@ -169,3 +205,5 @@ const validatorAddCard = new FormValidator(configFormSelector, formNewElement);
 validatorAddCard.enableValidation();
 const validatorEditProfile = new FormValidator(configFormSelector, popupEditForm);
 validatorEditProfile.enableValidation();
+const validatorEditAvatar = new FormValidator(configFormSelector, popupEditAvatar);
+validatorEditAvatar.enableValidation();

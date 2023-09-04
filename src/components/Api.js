@@ -43,12 +43,12 @@ export class Api {
     }
 
     // Обновление аватара пользователя
-    editPhotoProfile(data) {
+    editAvatar(data) {
         return fetch(`${this._url}/v1/cohort-73/users/me/avatar`, {
             method: 'PATCH',
             headers: this._headers,
             body: JSON.stringify({
-                avatar: data.avatar
+                avatar: data.link
             })
         })
         .then(this.#onResponce)
@@ -93,11 +93,6 @@ export class Api {
     }
 }
 
-
-
-
-
-
 //МОИ ДАННЫЕ
 //fetch('https://mesto.nomoreparties.co/v1/cohort-73/cards', {
   //headers: {
@@ -107,29 +102,4 @@ export class Api {
   //.then(res => res.json())
   //.then((result) => {
     //console.log(result);
-  //});
-
-
-
-
-
-//fetch('https://example.com/users', {
-    //method: 'POST',
-    //headers: {
-      //'Content-Type': 'application/json'
-    //},
-    //body: JSON.stringify({
-      //username: 'ivan'
-    //})
-//});
-
-//fetch('https://praktikum.yandex.ru')
-  //.then((res) => {
-    //return res.json(); // возвращаем результат работы метода и идём в следующий then
-  //})
-  //.then((data) => {
-    //console.log(data.user.name); // если мы попали в этот then, data — это объект
-  //})
-  //.catch((err) => {
-    //console.log('Ошибка. Запрос не выполнен');
   //});

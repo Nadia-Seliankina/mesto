@@ -10,8 +10,7 @@ export class Card {
         this._handleClickDelete = handleClickDelete;
         this._handleLikeCard = handleLikeCard;
         this._userId = userId;
-        //this._ownerId = dataCard.owner._id;
-
+        this._ownerId = dataCard.owner._id;
     }
 
     // Получить шаблон
@@ -21,11 +20,6 @@ export class Card {
         // вернём клонированный DOM-элемент карточки
         return elementTemplate;
     }
-
-    // Удаление карточки
-    //_handleDeleteCard() {
-    //this._deleteBtn.closest('.element').remove(); // для ближайшего элемента по селектору
-    //}
 
     isLiked() {
         return this._dataCard.likes.some((item) => {
@@ -42,19 +36,6 @@ export class Card {
             this._likeBtn.classList.remove('element__like_active');
         }
     }
-
-    //isOwner() {
-    //return this._dataCard.owner.some((item) => {
-    //console.log(item);
-    //return item._id === this._userId;
-    //})
-    //}
-
-    //_showDelete() {
-        //if(this._ownerId !== this._userId) {
-            //this._deleteBtn.remove();
-        //}
-    //}
 
     _setEventListeners() {
         this._likeBtn.addEventListener('click', () => {
@@ -108,6 +89,9 @@ export class Card {
 
         //добавим удаление карточки
         this._deleteBtn = this._view.querySelector('.element__delete'); // Кнопка удаления
+        if (this._userId !== this._ownerId) {
+            this._deleteBtn.remove();
+        };
 
         //добавим обработчик лайка карточки
         this._likeBtn = this._view.querySelector('.element__button'); // Кнопка нравится
@@ -116,13 +100,7 @@ export class Card {
         //добавим открытие большой фотографии
         this._openBigImageBtn = this._view.querySelector('.element__image-button'); // Кнопка открытия попапа
 
-        //if (this._userId !== this._dataCard.owner._id) {
-            //this._deleteBtn.remove();
-        //};
-
         this._setEventListeners();
-
-        //this._showDelete();
 
         // Вернём элемент наружу
         return this._view;
