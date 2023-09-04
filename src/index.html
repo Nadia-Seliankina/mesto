@@ -52,11 +52,11 @@
           <!-- Получения данных о имени -->
           <input type="text" name="name" placeholder="Имя" class="popup__input" id="inputName" required minlength="2"
             maxlength="40">
-          <span id="name-error" class="popup__error popup__error_num_1"></span>
+          <span id="name-user-error" name="name-error" class="popup__error popup__error_num_1"></span>
           <!-- Получения данных о деятельности -->
           <input type="text" name="about" placeholder="Вид деятельности" class="popup__input" id="inputActivity"
             required minlength="2" maxlength="200">
-          <span id="about-error" class="popup__error popup__error_num_2"></span>
+          <span id="about-error" name="about-error" class="popup__error popup__error_num_2"></span>
         </fieldset>
         <button name="button-save" type="submit" class="popup__button-save">
           Сохранить
@@ -76,14 +76,14 @@
         <fieldset class="popup__fieldset">
           <!-- Получения данных о ссылке на аватар -->
           <input type="url" name="link" placeholder="Ссылка на аватар" class="popup__input" id="link-avatar" required>
-          <span id="link-error" class="popup__error popup__error_num_2"></span>
+          <span id="link-error-avatar" name="link-error" class="popup__error popup__error_num_2"></span>
         </fieldset>
         <button name="button-save" type="submit" class="popup__button-save">
           Сохранить
         </button>
       </form>
       <button name="popup-edit-button-close" type="button" class="popup__button-close" aria-label="Закрыть"
-        id="popup-edit-button-close">
+        id="popup-avatar-button-close">
         <img class="popup__button-image" src="<%=require('./images/Close-Icon.svg')%>" alt="Закрыть">
       </button>
     </div>
@@ -97,10 +97,10 @@
           <!-- Получения данных о названии места -->
           <input type="text" name="name" placeholder="Название" class="popup__input" id="name" required minlength="2"
             maxlength="30">
-          <span id="name-error" class="popup__error popup__error_num_1"></span>
+          <span id="name-error" name="name-error" class="popup__error popup__error_num_1"></span>
           <!-- Получения данных о ссылке на фото -->
           <input type="url" name="link" placeholder="Ссылка на картинку" class="popup__input" id="link" required>
-          <span id="link-error" class="popup__error popup__error_num_2"></span>
+          <span id="link-error" name="link-error" class="popup__error popup__error_num_2"></span>
         </fieldset>
         <button name="button-save" type="submit" class="popup__button-save">
           Создать
@@ -135,7 +135,7 @@
           <button name="button-like" type="button" class="element__button" aria-label="Нравится">
             <img class="element__like" src="<%=require('./images/Vector.svg')%>" alt="Нравится">
           </button>
-          <h3 class="element__counter">0</h2>
+          <h3 class="element__counter">0</h3>
         </div>
       </div>
       <button name="button-delete" type="button" class="element__delete" aria-label="Удалить">

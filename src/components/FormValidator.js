@@ -60,7 +60,8 @@ export class FormValidator {
         this._isInputValid = inputElement.validity.valid;
 
         // Получаем элемент ошибки
-        this._errorElement = this._formElement.querySelector(`#${inputElement.name}-error`);
+        //this._errorElement = this._formElement.querySelector(`#${inputElement.name}-error`);
+        this._errorElement = this._formElement.querySelector(`[name=${inputElement.name}-error]`);
         //if (!this._errorElement) return;
 
         // Если инпут не валиден выводи сообщение об ошибке в элемент ошибки и добавляем класс невалидности
@@ -108,7 +109,8 @@ export class FormValidator {
   
         this._inputsList.forEach((inputElement) => {
             //Так как errorElement ещё не определён внутри этой функции, ещё не доступен так как на каждый ввод определяется
-            const errorElement = this._formElement.querySelector(`#${inputElement.name}-error`);
+            //const errorElement = this._formElement.querySelector(`#${inputElement.name}-error`);
+            const errorElement = this._formElement.querySelector(`[name=${inputElement.name}-error]`);
             this._hideError(inputElement, errorElement); //очищаем ошибки
         });
         console.log('resetVALIDATION');

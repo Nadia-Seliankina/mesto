@@ -9,13 +9,6 @@
 
 .profile__avatar-button::after {
     cursor: pointer;
-    opacity: 0.6;
-
-    background: rgba(0, 0, 0, 0.8);
-    background-image: url('../../../../src/images/penna.png');
-    opacity: 0;
-    background-repeat: no-repeat;
-    background-position: center;
     content: '';
     position: absolute;
     top: 0;
@@ -24,6 +17,10 @@
     height: 100%;
 }
 
-.profile__avatar-button:hover:after {
+.profile__avatar-button:hover::after {
     opacity: 1;
+    background: rgba(0, 0, 0, 0.8);
+    background-image: url('../../../../src/images/penna.png');
+    background-repeat: no-repeat;
+    background-position: center;
 }
